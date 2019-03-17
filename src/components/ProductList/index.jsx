@@ -39,10 +39,7 @@ export default function ProductList() {
                         imgSrc={elemt.img_url}
                         isPromotion={elemt.is_promotion}
                         oldPrice={elemt.price.toLocaleString()}
-                        newPrice={Math.round(
-                          elemt.price *
-                            (1 - elemt.final_promotion_percent / 100)
-                        ).toLocaleString()}
+                        newPrice={elemt.final_price.toLocaleString()}
                       />
                     );
                   })}
