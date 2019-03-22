@@ -3,6 +3,7 @@ import "./Home.css";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import ProductList from "../../components/ProductList";
+import data from "../../dataProductList.json";
 // import cartContextProvider from "../../hooks/cartContext";
 
 export const HomeContext = React.createContext(0);
@@ -13,10 +14,20 @@ function Home() {
   const [total, setTotal] = useState(0);
   const [product, setProduct] = useState([]);
   const [countProduct, setCountProduct] = useState(0);
+  const [dataSort, setDataSort] = useState(data);
 
   return (
     <Provider
-      value={{ total, setTotal, product, setProduct, countProduct, setCountProduct }}
+      value={{
+        dataSort,
+        setDataSort,
+        total,
+        setTotal,
+        product,
+        setProduct,
+        countProduct,
+        setCountProduct
+      }}
     >
       <Header />
       <ProductList />

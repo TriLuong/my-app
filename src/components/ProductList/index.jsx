@@ -6,8 +6,11 @@ import recentProduct2 from "../../assets/shop-rsp2.jpg";
 import recentProduct4 from "../../assets/shop-rsp4.jpg";
 import shopBanner from "../../assets/shop-banner.jpg";
 
+import { HomeContext } from "../../pages/Home";
+
 export default function ProductList() {
-  let dataSort = [...data];
+  const value = React.useContext(HomeContext);
+  console.log("value.dataSort ", value.dataSort);
 
   const sortAZ = (a, b) => {
     let nameA = a.name.toUpperCase();
@@ -42,31 +45,25 @@ export default function ProductList() {
   };
 
   const onClickAZ = () => {
-    dataSort = data.sort(sortAZ);
-    console.log(dataSort);
+    value.setDataSort(value.dataSort.sort(sortAZ));
   };
 
   const onClickZA = () => {
-    dataSort = data.sort(sortZA);
-    console.log(dataSort);
+    value.setDataSort(value.dataSort.sort(sortZA));
   };
 
   const onClickH2L = () => {
-    dataSort = data.sort(sortH2L);
-    console.log(dataSort);
+    value.setDataSort(value.dataSort.sort(sortH2L));
   };
 
   const onClickL2H = () => {
-    dataSort = data.sort(sortL2H);
-    console.log(dataSort);
+    value.setDataSort(value.dataSort.sort(sortL2H));
   };
 
   const ocClickTopSale = () => {
-    dataSort = data.sort(sortTopSale);
-    console.log(dataSort);
+    value.setDataSort(value.dataSort.sort(sortTopSale));
   };
 
-  // console.log("data", (data));
   return (
     <section className="shop-area pt-150 pb-100">
       <div className="container">
@@ -91,12 +88,10 @@ export default function ProductList() {
                 aria-labelledby="home-tab"
               >
                 <div className="row">
-                  {dataSort.map((elemt, index) => {
-                    return <ProductItem 
-                      key={elemt.id}
-                      index={index}
-                      {...elemt}
-                    />;
+                  {value.dataSort.map((elemt, index) => {
+                    return (
+                      <ProductItem key={elemt.id} index={index} {...elemt} />
+                    );
                   })}
                 </div>
               </div>
