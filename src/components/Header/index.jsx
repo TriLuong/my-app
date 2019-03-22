@@ -1,7 +1,12 @@
-import React from 'react'
-import logo from '../../assets/logo_shop.png'
+import React from "react";
+import logo from "../../assets/logo_shop.png";
+import { HomeContext } from "../../pages/Home";
+import Cart from "../Cart";
 
 export default function Header() {
+  const value = React.useContext(HomeContext);
+  // console.log("value.product", (value.product));
+  // console.log("...value.product", [{...value.product}]);
   return (
     <header>
       <div id="header-sticky" className="header-area box-90 sticky-header">
@@ -10,7 +15,7 @@ export default function Header() {
             <div className="col-xl-2 col-lg-6 col-md-6 col-7 col-sm-5 d-flex align-items-center pos-relative">
               <div className="logo">
                 <a href="#">
-                  <img src={logo} alt="" />{" "}
+                  <img src={logo} alt="" />
                 </a>
               </div>
 
@@ -57,7 +62,7 @@ export default function Header() {
             </div>
             <div className="col-xl-8 col-lg-6 col-md-8 col-8 d-none d-xl-block">
               <div className="main-menu text-center">
-                <nav id="mobile-menu" style={{display: "block"}}>
+                <nav id="mobile-menu" style={{ display: "block" }}>
                   <ul>
                     <li>
                       <a href="#">Home</a>
@@ -100,7 +105,10 @@ export default function Header() {
               <div className="header-right f-right">
                 <ul>
                   <li className="search-btn">
-                    <a className="search-btn nav-search search-trigger" href="#">
+                    <a
+                      className="search-btn nav-search search-trigger"
+                      href="#"
+                    >
                       <i className="fas fa-search" />
                     </a>
                   </li>
@@ -112,82 +120,22 @@ export default function Header() {
                   <li className="d-shop-cart">
                     <a href="#">
                       <i className="fas fa-shopping-cart" />{" "}
-                      <span className="cart-count">3</span>
+                      {value.countProduct !== 0 ? (
+                        <span className="cart-count">{value.countProduct}</span>
+                      ) : (
+                        ""
+                      )}
                     </a>
                     <ul className="minicart">
-                      <li>
-                        <div className="cart-img">
-                          <a href="#">
-                            <img src="./assets/pro1.jpg" alt="" />
-                          </a>
-                        </div>
-                        <div className="cart-content">
-                          <h3>
-                            <a href="#">Black &amp; White Shoes</a>
-                          </h3>
-                          <div className="cart-price">
-                            <span className="new">$ 229.9</span>
-                            <span>
-                              <del>$239.9</del>
-                            </span>
-                          </div>
-                        </div>
-                        <div className="del-icon">
-                          <a href="#">
-                            <i className="far fa-trash-alt" />
-                          </a>
-                        </div>
-                      </li>
-                      <li>
-                        <div className="cart-img">
-                          <a href="#">
-                            <img src="./assets/pro2.jpg" alt="" />
-                          </a>
-                        </div>
-                        <div className="cart-content">
-                          <h3>
-                            <a href="#">Black &amp; White Shoes</a>
-                          </h3>
-                          <div className="cart-price">
-                            <span className="new">$ 229.9</span>
-                            <span>
-                              <del>$239.9</del>
-                            </span>
-                          </div>
-                        </div>
-                        <div className="del-icon">
-                          <a href="#">
-                            <i className="far fa-trash-alt" />
-                          </a>
-                        </div>
-                      </li>
-                      <li>
-                        <div className="cart-img">
-                          <a href="#">
-                            <img src="./assets/pro3.jpg" alt="" />
-                          </a>
-                        </div>
-                        <div className="cart-content">
-                          <h3>
-                            <a href="#">Black &amp; White Shoes</a>
-                          </h3>
-                          <div className="cart-price">
-                            <span className="new">$ 229.9</span>
-                            <span>
-                              <del>$239.9</del>
-                            </span>
-                          </div>
-                        </div>
-                        <div className="del-icon">
-                          <a href="#">
-                            <i className="far fa-trash-alt" />
-                          </a>
-                        </div>
-                      </li>
+                      {value.countProduct !== 0
+                        ? value.product.map((elemt, index) => {
+                            return <Cart key={elemt.id} {...elemt} />;
+                          })
+                        : ""}
                       <li>
                         <div className="total-price">
                           <span className="f-left">Total:</span>
-                          <span className="f-right">$300.0</span>
+                          <span className="f-right">{value.total}</span>
                         </div>
                       </li>
                       <li>

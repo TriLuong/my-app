@@ -7,6 +7,66 @@ import recentProduct4 from "../../assets/shop-rsp4.jpg";
 import shopBanner from "../../assets/shop-banner.jpg";
 
 export default function ProductList() {
+  let dataSort = [...data];
+
+  const sortAZ = (a, b) => {
+    let nameA = a.name.toUpperCase();
+    let nameB = b.name.toUpperCase();
+    if (nameA < nameB) return -1;
+    else if (nameA > nameB) return 1;
+    else return 0;
+  };
+
+  const sortZA = (a, b) => {
+    let nameA = a.name.toUpperCase();
+    let nameB = b.name.toUpperCase();
+    if (nameA < nameB) return 1;
+    else if (nameA > nameB) return -1;
+    else return 0;
+  };
+
+  const sortH2L = (a, b) => {
+    if (a.final_price < b.final_price) return 1;
+    else if (a.final_price > b.final_price) return -1;
+    else return 0;
+  };
+
+  const sortL2H = (a, b) => {
+    if (a.final_price < b.final_price) return -1;
+    else if (a.final_price > b.final_price) return 1;
+    else return 0;
+  };
+
+  const sortTopSale = (a, b) => {
+    return b.final_promotion_percent - a.final_promotion_percent;
+  };
+
+  const onClickAZ = () => {
+    dataSort = data.sort(sortAZ);
+    console.log(dataSort);
+  };
+
+  const onClickZA = () => {
+    dataSort = data.sort(sortZA);
+    console.log(dataSort);
+  };
+
+  const onClickH2L = () => {
+    dataSort = data.sort(sortH2L);
+    console.log(dataSort);
+  };
+
+  const onClickL2H = () => {
+    dataSort = data.sort(sortL2H);
+    console.log(dataSort);
+  };
+
+  const ocClickTopSale = () => {
+    dataSort = data.sort(sortTopSale);
+    console.log(dataSort);
+  };
+
+  // console.log("data", (data));
   return (
     <section className="shop-area pt-150 pb-100">
       <div className="container">
@@ -31,17 +91,12 @@ export default function ProductList() {
                 aria-labelledby="home-tab"
               >
                 <div className="row">
-                  {data.map((elemt, index) => {
-                    return (
-                      <ProductItem
-                        key={index}
-                        productName={elemt.name}
-                        imgSrc={elemt.img_url}
-                        isPromotion={elemt.is_promotion}
-                        oldPrice={elemt.price.toLocaleString()}
-                        newPrice={elemt.final_price.toLocaleString()}
-                      />
-                    );
+                  {dataSort.map((elemt, index) => {
+                    return <ProductItem 
+                      key={elemt.id}
+                      index={index}
+                      {...elemt}
+                    />;
                   })}
                 </div>
               </div>
@@ -72,19 +127,29 @@ export default function ProductList() {
                 <h3 className="shop-title">SHOP BY</h3>
                 <ul className="shop-link">
                   <li>
-                    <a href="#">Name: A-Z</a>
+                    <a href="#" onClick={onClickAZ}>
+                      Name: A-Z
+                    </a>
                   </li>
                   <li>
-                    <a href="#">Name: Z-A</a>
+                    <a href="#" onClick={onClickZA}>
+                      Name: Z-A
+                    </a>
                   </li>
                   <li>
-                    <a href="#">Price: High to Low</a>
+                    <a href="#" onClick={onClickH2L}>
+                      Price: High to Low
+                    </a>
                   </li>
                   <li>
-                    <a href="#">Price: Low to High</a>
+                    <a href="#" onClick={onClickL2H}>
+                      Price: Low to High
+                    </a>
                   </li>
                   <li>
-                    <a href="#">Product: Top Sales</a>
+                    <a href="#" onClick={ocClickTopSale}>
+                      Product: Top Sales
+                    </a>
                   </li>
                 </ul>
               </div>

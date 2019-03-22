@@ -1,15 +1,65 @@
-import React from "react";
+import React, { useState } from "react";
+// import useCart from "../../hooks/useCart"
+import { HomeContext } from "../../pages/Home";
 
 export default function ProductItem(props) {
+  const value = React.useContext(HomeContext);
+  const [state, setState] = useState();
+  const [isSelect, setSelect] = useState(false);
+
+  const findIndex = (id) =>{
+    var result = -1;
+    value.product.forEach((elemt, index) => {
+        if(elemt.id === id){
+            result = index;
+        }
+    });
+    return result;
+}
+
+  const select = () => {
+    if (isSelect === false) {
+      // console.log(props.name);
+      setState("(Selected)");
+      value.setCountProduct(value.countProduct + 1);
+      value.product.push(props);
+      
+    } else {
+      setState();
+      value.setCountProduct(value.countProduct - 1);
+      if (value.countProduct < 0) value.setCountProduct(0);
+      
+      value.product.splice(findIndex(props.id),1);
+
+    }
+    setSelect(!isSelect);
+    value.setProduct(value.product);
+    console.log("value.product",value.product);
+  };
+
+  // const [state, setState] = useState();
+  // const [isSelect, setSelect] = useState(false);
+
+  // const select = () => {
+  //   if (isSelect === false) {
+  //     setState("(Selected)");
+  //     setSelect(true);
+  //   }
+  //   else {
+  //     setState();
+  //   }
+  //   console.log(props.name, props.id);
+  //   setSelect(!isSelect);
+  // }
   return (
     <div className="col-xl-4 col-lg-6 col-md-6">
       <div className="product-wrapper mb-50">
         <div className="product-img mb-25">
           <a href="#">
-            <img src={props.imgSrc} alt="" />
+            <img src={props.img_url} alt="" />
           </a>
           <div className="product-action text-center">
-            <a href="#" title="Shoppingb Cart">
+            <a title="Shoppingb Cart" onClick={select}>
               <i className="fas fa-shopping-cart" />
             </a>
             <a href="#" title="Quick View">
@@ -19,16 +69,18 @@ export default function ProductItem(props) {
         </div>
         <div className="product-content pr-0">
           <div className="pro-cat mb-10">
-            <a href="#">USB</a>
+            <a href="#">USB {state}</a>
           </div>
           <h4>
-            <a href="#">{props.productName}</a>
+            <a href="#">{props.name}</a>
           </h4>
           <div className="product-meta">
             <div className="pro-price">
-              <span>{props.newPrice} VND</span>
-              {props.isPromotion === 1 ? (
-                <span className="old-price">{props.oldPrice} VND</span>
+              <span>{props.final_price.toLocaleString()} VND</span>
+              {props.is_promotion === 1 ? (
+                <span className="old-price">
+                  {props.price.toLocaleString()} VND
+                </span>
               ) : (
                 ""
               )}
