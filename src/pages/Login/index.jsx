@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import Header from '../../components/Header'
-import Footer from '../../components/Footer'
-import { HomeContext } from '../Home'
+import React, { useState } from "react";
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
+import { HomeContext } from "../Home";
 import data from "../../dataProductList.json";
 
-const Provider = HomeContext.Provider
+const Provider = HomeContext.Provider;
 function LoginPage() {
   // const [state, setState] = useState({})
   // const value = React.useContext(HomeContext);
@@ -12,17 +12,32 @@ function LoginPage() {
   const [product, setProduct] = useState([]);
   const [countProduct, setCountProduct] = useState(0);
   const [dataSort, setDataSort] = useState(data);
+  const [LoginInfo,setLoginInfo] = useState({email:"", password:""});
+
+  const ChangeHandler = event => {
+    const target = event.target;
+    const value = target.value;
+    const name = target.name;
+    setLoginInfo({...LoginInfo, [name]: value});
+  }
+
+  const SubmitHandler = event => {
+    event.preventDefault();
+    console.log(LoginInfo);
+  }
   return (
-    <Provider value={{
-      dataSort,
-      setDataSort,
-      total,
-      setTotal,
-      product,
-      setProduct,
-      countProduct,
-      setCountProduct
-    }}>
+    <Provider
+      value={{
+        dataSort,
+        setDataSort,
+        total,
+        setTotal,
+        product,
+        setProduct,
+        countProduct,
+        setCountProduct
+      }}
+    >
       <Header />
       <section className="login-area pt-100 pb-100">
         <div className="container">
@@ -30,11 +45,27 @@ function LoginPage() {
             <div className="col-lg-8 offset-lg-2">
               <div className="basic-login">
                 <h3 className="text-center mb-60">Login From</h3>
-                <form action="#">
-                  <label htmlFor="name">Email Address <span>**</span></label>
-                  <input id="name" type="text" placeholder="Enter Username or Email address..." />
-                  <label htmlFor="pass">Password <span>**</span></label>
-                  <input id="pass" type="password" placeholder="Enter password..." />
+                <form action="#" onSubmit={SubmitHandler}>
+                  <label htmlFor="name">
+                    Email Address <span>**</span>
+                  </label>
+                  <input
+                    id="name"
+                    type="text"
+                    placeholder="Enter Username or Email address..."
+                    name="email"
+                    onChange={ChangeHandler}
+                  />
+                  <label htmlFor="pass">
+                    Password <span>**</span>
+                  </label>
+                  <input
+                    id="pass"
+                    type="password"
+                    placeholder="Enter password..."
+                    name="password"
+                    onChange={ChangeHandler}
+                  />
                   <div className="login-action mb-20 fix">
                     <span className="log-rem f-left">
                       <input id="remember" type="checkbox" />
@@ -44,8 +75,10 @@ function LoginPage() {
                       <a href="#">Lost your password?</a>
                     </span>
                   </div>
-                  <button className="btn theme-btn-2 w-100">Login Now</button>
-                  <div className="or-divide"><span>or</span></div>
+                  <button className="btn theme-btn-2 w-100" type="submit">Login Now</button>
+                  <div className="or-divide">
+                    <span>or</span>
+                  </div>
                   <button className="btn theme-btn w-100">Register Now</button>
                 </form>
               </div>
