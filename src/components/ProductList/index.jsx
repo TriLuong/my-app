@@ -29,8 +29,8 @@ export default function ProductList() {
   };
 
   const sortH2L = (a, b) => {
-    if (a.final_price < b.final_price) return 1;
-    else if (a.final_price > b.final_price) return -1;
+    if ((a.final_price) < (b.final_price)) return 1;
+    else if ((a.final_price) > (b.final_price)) return -1;
     else return 0;
   };
 
@@ -45,26 +45,32 @@ export default function ProductList() {
   };
 
   const onClickAZ = () => {
-    value.setDataSort(value.dataSort.sort(sortAZ));
+    value.setDataSort([...value.dataSort.sort(sortAZ)]);
+    console.log("value.dataSort", value.dataSort);
   };
 
   const onClickZA = () => {
-    value.setDataSort(value.dataSort.sort(sortZA));
+    value.setDataSort([...value.dataSort.sort(sortZA)]);
+    console.log("value.dataSort", value.dataSort);
   };
 
   const onClickH2L = () => {
-    value.setDataSort(value.dataSort.sort(sortH2L));
+    
+    value.setDataSort([...value.dataSort.sort(sortH2L)]);
+    console.log("value.dataSort", value.dataSort);
   };
 
   const onClickL2H = () => {
-    value.setDataSort(value.dataSort.sort(sortL2H));
+    value.setDataSort([...value.dataSort.sort(sortL2H)]);
+    console.log("value.dataSort", value.dataSort);
   };
 
   const ocClickTopSale = () => {
-    value.setDataSort(value.dataSort.sort(sortTopSale));
+    value.setDataSort([...value.dataSort.sort(sortTopSale)]);
+    console.log("value.dataSort", value.dataSort);
   };
 
-  return (
+  return (  
     <section className="shop-area pt-150 pb-100">
       <div className="container">
         <div className="row">

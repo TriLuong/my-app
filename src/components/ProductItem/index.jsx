@@ -7,15 +7,15 @@ export default function ProductItem(props) {
   const [state, setState] = useState();
   const [isSelect, setSelect] = useState(false);
 
-  const findIndex = (id) =>{
+  const findIndex = id => {
     var result = -1;
     value.product.forEach((elemt, index) => {
-        if(elemt.id === id){
-            result = index;
-        }
+      if (elemt.id === id) {
+        result = index;
+      }
     });
     return result;
-}
+  };
 
   const select = () => {
     if (isSelect === false) {
@@ -23,18 +23,19 @@ export default function ProductItem(props) {
       setState("(Selected)");
       value.setCountProduct(value.countProduct + 1);
       value.product.push(props);
-      
+      value.setTotal(value.total + props.final_price);
     } else {
       setState();
       value.setCountProduct(value.countProduct - 1);
       if (value.countProduct < 0) value.setCountProduct(0);
-      
-      value.product.splice(findIndex(props.id),1);
-
+      value.product.splice(findIndex(props.id), 1);
+      value.setTotal(value.total - props.final_price);
     }
     setSelect(!isSelect);
     value.setProduct(value.product);
-    console.log("value.product",value.product);
+    
+    console.log("value.total", value.total);
+    console.log("value.product", value.product);
   };
 
   // const [state, setState] = useState();

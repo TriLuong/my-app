@@ -2,13 +2,8 @@ import React from "react";
 import { HomeContext } from "../../pages/Home";
 
 export default function Cart(props) {
-  const value = React.useContext(HomeContext);
   console.log(props);
-  let total=0;
-  // console.log("total", total);
-  value.total += props.final_price ;
-  console.log("value.total",value.total);
-  value.setTotal(total);
+
   return (
     
       <li>

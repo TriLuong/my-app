@@ -120,11 +120,7 @@ export default function Header() {
                   <li className="d-shop-cart">
                     <a href="#">
                       <i className="fas fa-shopping-cart" />{" "}
-                      {value.countProduct !== 0 ? (
-                        <span className="cart-count">{value.countProduct}</span>
-                      ) : (
-                        ""
-                      )}
+                      <span className="cart-count">{value.countProduct}</span>
                     </a>
                     <ul className="minicart">
                       {value.countProduct !== 0
