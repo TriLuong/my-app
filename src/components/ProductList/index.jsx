@@ -1,5 +1,6 @@
 import React from "react";
 import ProductItem from "../ProductItem";
+import SearchWidget from "../SearchWidget"
 import data from "../../dataProductList.json";
 import recentProduct3 from "../../assets/shop-rsp3.jpg";
 import recentProduct2 from "../../assets/shop-rsp2.jpg";
@@ -106,15 +107,7 @@ export default function ProductList() {
           {/*<!--SideBar -->*/}
           <div className="col-xl-3 col-lg-4">
             <div className="sidebar-shop">
-              <div className="shop-widget">
-                <h3 className="shop-title">Search by</h3>
-                <form action="#" className="shop-search">
-                  <input type="text" placeholder="Your keyword...." />
-                  <button>
-                    <i className="fa fa-search" />
-                  </button>
-                </form>
-              </div>
+              <SearchWidget></SearchWidget>
               {/*<!-- 
                             <div className="shop-widget">
                                 <h3 className="shop-title">Filter selection</h3>

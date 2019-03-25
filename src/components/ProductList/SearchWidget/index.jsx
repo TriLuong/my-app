@@ -2,16 +2,19 @@ import React from "react";
 import { HomeContext } from "../../pages/Home";
 
 export default function SerchWidget() {
-  const value = React.useContext(HomeContext);
+  const [inputValue, setInputValue] = React.useState();
 
   const ChangeHandler = event => {
-    value.inputValue = event.target.value;
-    // console.log(value.inputValue);
+    var target = event.target;
+    var value = target.value;
+    var name = target.name;
+    setInputValue({[name]: value});
+    // console.log(inputValue);
   };
 
   const SubmitHandler = event => {
-    value.setInputValue(value.inputValue);
-    event.preventDefault(value.inputValue);
+    event.preventDefault();
+    // console.log(inputValue);
   };
   return (
     <div className="shop-widget">
