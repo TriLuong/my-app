@@ -121,27 +121,27 @@ export default function ProductList() {
                 <h3 className="shop-title">SHOP BY</h3>
                 <ul className="shop-link">
                   <li>
-                    <a href="#" onClick={onClickAZ}>
+                    <a onClick={onClickAZ}>
                       Name: A-Z
                     </a>
                   </li>
                   <li>
-                    <a href="#" onClick={onClickZA}>
+                    <a onClick={onClickZA}>
                       Name: Z-A
                     </a>
                   </li>
                   <li>
-                    <a href="#" onClick={onClickH2L}>
+                    <a onClick={onClickH2L}>
                       Price: High to Low
                     </a>
                   </li>
                   <li>
-                    <a href="#" onClick={onClickL2H}>
+                    <a onClick={onClickL2H}>
                       Price: Low to High
                     </a>
                   </li>
                   <li>
-                    <a href="#" onClick={ocClickTopSale}>
+                    <a onClick={ocClickTopSale}>
                       Product: Top Sales
                     </a>
                   </li>

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 // import useCart from "../../hooks/useCart"
 import { HomeContext } from "../../pages/Home";
+import { Link } from "react-router-dom";
 
 export default function ProductItem(props) {
   const value = React.useContext(HomeContext);
@@ -33,7 +34,7 @@ export default function ProductItem(props) {
     }
     setSelect(!isSelect);
     value.setProduct(value.product);
-    
+
     console.log("value.total", value.total);
     console.log("value.product", value.product);
   };
@@ -56,16 +57,16 @@ export default function ProductItem(props) {
     <div className="col-xl-4 col-lg-6 col-md-6">
       <div className="product-wrapper mb-50">
         <div className="product-img mb-25">
-          <a href="#">
+          <Link to={`/product/${props.id}`}>
             <img src={props.img_url} alt="" />
-          </a>
+          </Link>
           <div className="product-action text-center">
             <a title="Shoppingb Cart" onClick={select}>
               <i className="fas fa-shopping-cart" />
             </a>
-            <a href="#" title="Quick View">
+            
               <i className="fas fa-search" />
-            </a>
+            
           </div>
         </div>
         <div className="product-content pr-0">

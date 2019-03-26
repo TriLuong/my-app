@@ -4,6 +4,7 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import ProductList from "../../components/ProductList";
 import data from "../../dataProductList.json";
+
 // import cartContextProvider from "../../hooks/cartContext";
 
 export const HomeContext = React.createContext(0);
@@ -30,7 +31,7 @@ function Home() {
       }}
     >
       <Header />
-      <ProductList />
+      <ProductList /> 
       <Footer />
     </Provider>
   );
