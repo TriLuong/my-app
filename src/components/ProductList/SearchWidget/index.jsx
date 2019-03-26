@@ -1,5 +1,5 @@
 import React from "react";
-import { HomeContext } from "../../pages/Home";
+import { HomeContext } from "../../../pages/Home";
 
 export default function SerchWidget() {
   const [inputValue, setInputValue] = React.useState();

@@ -3,7 +3,25 @@ import { HomeContext } from "../../pages/Home";
 
 export default function Cart(props) {
   console.log(props);
+  const value = React.useContext(HomeContext);
 
+  const findIndex = id => {
+    var result = -1;
+    value.product.forEach((elemt, index) => {
+      if (elemt.id === id) {
+        result = index;
+      }
+    });
+    return result;
+  };
+
+  const deleteProduct = () => {
+      // setState();
+      value.setCountProduct(value.countProduct - 1);
+      if (value.countProduct < 0) value.setCountProduct(0);
+      value.product.splice(findIndex(props.id), 1);
+      value.setTotal(value.total - props.final_price);
+  }
   return (
     
       <li>
@@ -30,7 +48,7 @@ export default function Cart(props) {
           </div>
         </div>
         <div className="del-icon">
-          <a href="#">
+          <a href="#" onClick={deleteProduct}>
             <i className="far fa-trash-alt" />
           </a>
         </div>

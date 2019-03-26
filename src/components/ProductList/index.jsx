@@ -1,6 +1,6 @@
 import React from "react";
 import ProductItem from "../ProductItem";
-import SearchWidget from "../SearchWidget"
+import SearchWidget from "./SearchWidget"
 import data from "../../dataProductList.json";
 import recentProduct3 from "../../assets/shop-rsp3.jpg";
 import recentProduct2 from "../../assets/shop-rsp2.jpg";
