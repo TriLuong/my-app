@@ -57,16 +57,16 @@ export default function ProductItem(props) {
     <div className="col-xl-4 col-lg-6 col-md-6">
       <div className="product-wrapper mb-50">
         <div className="product-img mb-25">
-          <Link to={`/product/${props.id}`}>
+          <a href="#">
             <img src={props.img_url} alt="" />
-          </Link>
+          </a>
           <div className="product-action text-center">
             <a title="Shoppingb Cart" onClick={select}>
               <i className="fas fa-shopping-cart" />
             </a>
-            
+            <Link to={`/product/${props.id}`} title="Quick View">
               <i className="fas fa-search" />
-            
+            </Link>
           </div>
         </div>
         <div className="product-content pr-0">
