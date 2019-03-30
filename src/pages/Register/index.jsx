@@ -3,6 +3,7 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import { HomeContext } from "../Home";
 import data from "../../dataProductList.json";
+import firebase from "../../firebase";
 
 const Provider = HomeContext.Provider;
 
@@ -25,9 +26,10 @@ function RegisterPage() {
     setRegisterInfo({...RegisterInfo, [name]:value});
   }
 
-  const SubmitHandler = event => {
+  const SubmitHandler = async event => {
     event.preventDefault();
-    console.log(RegisterInfo);
+    const result = await firebase.auth().createUserWithEmailAndPassword(RegisterInfo.email,RegisterInfo.password);
+    console.log(result);
   }
   return (
     <Provider

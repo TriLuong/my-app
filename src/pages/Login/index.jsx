@@ -3,6 +3,7 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import { HomeContext } from "../Home";
 import data from "../../dataProductList.json";
+import firebase from "../../firebase";
 
 const Provider = HomeContext.Provider;
 function LoginPage() {
@@ -21,9 +22,10 @@ function LoginPage() {
     setLoginInfo({...LoginInfo, [name]: value});
   }
 
-  const SubmitHandler = event => {
+  const SubmitHandler = async event => {
     event.preventDefault();
-    console.log(LoginInfo);
+    const result = await firebase.auth().signInWithEmailAndPassword(LoginInfo.email,LoginInfo.password);
+    console.log(result);
   }
   return (
     <Provider
