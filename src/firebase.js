@@ -9,4 +9,9 @@ var config = {
   storageBucket: "my-app-65aad.appspot.com",
   messagingSenderId: "563932793054"
 };
+export const checkAuth = async () => {
+  const user = await firebase.auth().onAuthStateChanged();
+  return user;
+};
+
 export default firebase.initializeApp(config);

@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import data from "./dataProductList.json";
+import PrivateRoute from "./privateRouter";
 
 import "./index.css";
 import Home from "./pages/Home";
@@ -15,7 +16,7 @@ ReactDOM.render(
   <Router>
     <Switch>
       <Route exact path="/" component={Home} />
-      <Route path="/product/:id" component={ProductDetail} />
+      <PrivateRoute path="/product/:id" component={ProductDetail} />
       <Route path="/login" component={LoginPage} />
       <Route path="/register" component={RegisterPage} />
       <Route component={NotFound} />
