@@ -1,32 +1,43 @@
 import React, { useState } from "react";
+import { withRouter } from "react-router-dom";
+
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import { HomeContext } from "../Home";
 import data from "../../dataProductList.json";
 import firebase from "../../firebase";
+import { Z_STREAM_ERROR } from "zlib";
 
 const Provider = HomeContext.Provider;
-function LoginPage() {
+function LoginPage(props) {
   // const [state, setState] = useState({})
   // const value = React.useContext(HomeContext);
+  const [error, setError] = useState("");
   const [total, setTotal] = useState(0);
   const [product, setProduct] = useState([]);
   const [countProduct, setCountProduct] = useState(0);
   const [dataSort, setDataSort] = useState(data);
-  const [LoginInfo,setLoginInfo] = useState({email:"", password:""});
+  const [LoginInfo, setLoginInfo] = useState({ email: "", password: "" });
 
   const ChangeHandler = event => {
     const target = event.target;
     const value = target.value;
     const name = target.name;
-    setLoginInfo({...LoginInfo, [name]: value});
-  }
+    setLoginInfo({ ...LoginInfo, [name]: value });
+  };
 
   const SubmitHandler = async event => {
     event.preventDefault();
-    const result = await firebase.auth().signInWithEmailAndPassword(LoginInfo.email,LoginInfo.password);
-    console.log(result);
-  }
+    try {
+      const result = await firebase
+        .auth()
+        .signInWithEmailAndPassword(LoginInfo.email, LoginInfo.password);
+      console.log(result);
+      props.history.push({ pathname: "/" });
+    } catch (err) {
+      setError("* " + err.message);
+    }
+  };
   return (
     <Provider
       value={{
@@ -77,7 +88,10 @@ function LoginPage() {
                       <a href="#">Lost your password?</a>
                     </span>
                   </div>
-                  <button className="btn theme-btn-2 w-100" type="submit">Login Now</button>
+                  <p style={{ color: "red" }}>{error}</p>
+                  <button className="btn theme-btn-2 w-100" type="submit">
+                    Login Now
+                  </button>
                   <div className="or-divide">
                     <span>or</span>
                   </div>
@@ -93,4 +107,4 @@ function LoginPage() {
   );
 }
 
-export default LoginPage;
+export default withRouter(LoginPage);
