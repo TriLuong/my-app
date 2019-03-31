@@ -5,9 +5,6 @@ export default function Cart(props) {
   // console.log(props);
   const value = React.useContext(HomeContext);
 
-
- 
-
   const findIndex = id => {
     var result = -1;
     value.product.forEach((elemt, index) => {
@@ -26,7 +23,7 @@ export default function Cart(props) {
 
     value.product.forEach((elemt, index) => {
       if (elemt.id === props.id) {
-        value.product.splice(findIndex(index), 1);
+        value.product.splice(findIndex(props.id), 1);
       }
     });
   };
