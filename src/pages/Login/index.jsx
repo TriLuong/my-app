@@ -10,6 +10,7 @@ import { Z_STREAM_ERROR } from "zlib";
 
 const Provider = HomeContext.Provider;
 function LoginPage(props) {
+  console.log("props of LoginPage", props)
   // const [state, setState] = useState({})
   // const value = React.useContext(HomeContext);
   const [error, setError] = useState("");
@@ -29,11 +30,12 @@ function LoginPage(props) {
   const SubmitHandler = async event => {
     event.preventDefault();
     try {
+      console.log("props.location.state.from", props.location.state.from)
       const result = await firebase
         .auth()
         .signInWithEmailAndPassword(LoginInfo.email, LoginInfo.password);
-      console.log(result);
-      props.history.push({ pathname: "/" });
+      console.log("result",result);
+      props.history.push({ pathname: props.location.state.from });
     } catch (err) {
       setError("* " + err.message);
     }
