@@ -11,7 +11,7 @@ import { HomeContext } from "../../pages/Home";
 
 export default function ProductList() {
   const value = React.useContext(HomeContext);
-  console.log("value.dataSort ", value.dataSort);
+  // console.log("value.dataSort ", value.dataSort);
 
   const sortAZ = (a, b) => {
     let nameA = a.name.toUpperCase();

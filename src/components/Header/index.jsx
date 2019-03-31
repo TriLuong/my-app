@@ -7,6 +7,11 @@ export default function Header() {
   const value = React.useContext(HomeContext);
   // console.log("value.product", (value.product));
   // console.log("...value.product", [{...value.product}]);
+  let total = 0;
+  value.product.forEach((elemt, index) => {
+    total += elemt.final_price * elemt.quantity;
+  });
+  
   return (
     <header>
       <div id="header-sticky" className="header-area box-90 sticky-header">
@@ -131,7 +136,7 @@ export default function Header() {
                       <li>
                         <div className="total-price">
                           <span className="f-left">Total:</span>
-                          <span className="f-right">{value.total}</span>
+                          <span className="f-right">{total.toLocaleString()} VND</span>
                         </div>
                       </li>
                       <li>
