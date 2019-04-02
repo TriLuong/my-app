@@ -4,6 +4,8 @@ import firebase from "./firebase"
 
 
 export default function PrivateRoute({ component: Component, ...rest }) {
+  console.log("rest", rest);
+  console.log("component", Component);
   const isAuthen = firebase.auth().currentUser;
   console.log(isAuthen)
   return (
@@ -16,7 +18,7 @@ export default function PrivateRoute({ component: Component, ...rest }) {
           <Redirect
             to={{
               pathname: "/login",
-              state: { from: props.match.url }
+              state: { from: props.location.pathname }
             }}
           />
         )
