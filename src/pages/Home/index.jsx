@@ -4,8 +4,23 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import ProductList from "../../components/ProductList";
 import data from "../../dataProductList.json";
+import store from "../../redux/store";
+import {
+  loginRequest,
+  loginSuccess,
+  loginFail
+} from "../../redux/Login/Login.action";
 
 // import cartContextProvider from "../../hooks/cartContext";
+
+store.subscribe(()=>{
+  const state = store.getState();
+  console.log(state);
+});
+store.dispatch(loginRequest());
+store.dispatch(loginSuccess());
+store.dispatch(loginFail());
+
 
 export const HomeContext = React.createContext(0);
 const Provider = HomeContext.Provider;
