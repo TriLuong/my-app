@@ -3,14 +3,21 @@ import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import data from "./dataProductList.json";
 import PrivateRoute from "./privateRouter";
+import withLazy from "./hoc/withLazy";
 
 import "./index.css";
-import Home from "./pages/Home";
-import ProductDetail from "./pages/ProductDetail";
-import LoginPage from "./pages/Login";
-import RegisterPage from "./pages/Register";
-import NotFound from "./pages/NotFound";
+// import Home from "./pages/Home";
+// import ProductDetail from "./pages/ProductDetail";
+// import LoginPage from "./pages/Login";
+// import RegisterPage from "./pages/Register";
+// import NotFound from "./pages/NotFound";
 import * as serviceWorker from "./serviceWorker";
+
+const Home = withLazy(() => import("./pages/Home"));
+const ProductDetail = withLazy(() => import("./pages/ProductDetail"));
+const LoginPage = withLazy(() => import("./pages/Login"));
+const RegisterPage = withLazy(() => import("./pages/Register"));
+const NotFound = withLazy(() => import("./pages/NotFound"));
 
 ReactDOM.render(
   <Router>
