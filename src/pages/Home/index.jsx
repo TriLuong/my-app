@@ -11,6 +11,24 @@ import {
   loginFail
 } from "../../redux/Login/Login.action";
 
+import {
+  registerRequest,
+  registerSuccess,
+  registerFail,
+} from "../../redux/Register/Register.action"
+
+import {
+  productDetailRequest,
+  productDetailSuccess,
+  productDetailFail
+}from "../../redux/ProductDetail/ProductDetail.action"
+
+import {
+  productListRequest,
+  productListSuccess,
+  productListFail
+} from "../../redux/ProductList/ProductList.action"
+
 // import cartContextProvider from "../../hooks/cartContext";
 
 store.subscribe(()=>{
@@ -20,6 +38,18 @@ store.subscribe(()=>{
 store.dispatch(loginRequest());
 store.dispatch(loginSuccess());
 store.dispatch(loginFail());
+
+store.dispatch(registerRequest());
+store.dispatch(registerSuccess());
+store.dispatch(registerFail());
+
+store.dispatch(productDetailRequest());
+store.dispatch(productDetailSuccess());
+store.dispatch(productDetailFail());
+
+store.dispatch(productListRequest());
+store.dispatch(productListSuccess());
+store.dispatch(productListFail());
 
 
 export const HomeContext = React.createContext(0);
