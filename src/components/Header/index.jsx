@@ -2,6 +2,7 @@ import React from "react";
 import logo from "../../assets/logo_shop.png";
 import { HomeContext } from "../../pages/Home";
 import Cart from "../Cart";
+import {Link} from "react-router-dom"
 
 export default function Header() {
   const value = React.useContext(HomeContext);
@@ -70,7 +71,7 @@ export default function Header() {
                 <nav id="mobile-menu" style={{ display: "block" }}>
                   <ul>
                     <li>
-                      <a href="#">Home</a>
+                      <Link to="/">Home</Link>
                     </li>
                     <li>
                       <a href="#">Products </a>
@@ -81,15 +82,14 @@ export default function Header() {
                         <li>
                           <a href="#">About Us</a>
                         </li>
-
                         <li>
                           <a href="#">Contact Us</a>
                         </li>
                         <li>
-                          <a href="#">login</a>
+                          <Link to="/login">login</Link>
                         </li>
                         <li>
-                          <a href="#">Register</a>
+                          <Link to="/register">Register</Link>
                         </li>
                         <li>
                           <a href="#">Shoping Cart</a>
@@ -118,9 +118,9 @@ export default function Header() {
                     </a>
                   </li>
                   <li className="login-btn">
-                    <a href="#">
+                    <Link to="/login">
                       <i className="far fa-user" />
-                    </a>
+                    </Link>
                   </li>
                   <li className="d-shop-cart">
                     <a href="#">

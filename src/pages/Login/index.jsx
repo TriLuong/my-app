@@ -6,11 +6,12 @@ import Footer from "../../components/Footer";
 import { HomeContext } from "../Home";
 import data from "../../dataProductList.json";
 import firebase from "../../firebase";
+import { Link } from "react-router-dom";
 import { Z_STREAM_ERROR } from "zlib";
 
 const Provider = HomeContext.Provider;
 function LoginPage(props) {
-  console.log("props of LoginPage", props)
+  console.log("props of LoginPage", props);
   // const [state, setState] = useState({})
   // const value = React.useContext(HomeContext);
   const [error, setError] = useState("");
@@ -30,11 +31,11 @@ function LoginPage(props) {
   const SubmitHandler = async event => {
     event.preventDefault();
     try {
-      console.log("props.location.state.from", props.location.state.from)
+      console.log("props.location.state.from", props.location.state.from);
       const result = await firebase
         .auth()
         .signInWithEmailAndPassword(LoginInfo.email, LoginInfo.password);
-      console.log("result",result);
+      console.log("result", result);
       props.history.push({ pathname: props.location.state.from });
     } catch (err) {
       setError("* " + err.message);
@@ -97,7 +98,11 @@ function LoginPage(props) {
                   <div className="or-divide">
                     <span>or</span>
                   </div>
-                  <button className="btn theme-btn w-100">Register Now</button>
+                  <Link to="/register">
+                    <button className="btn theme-btn w-100">
+                      Register Now
+                    </button>
+                  </Link>
                 </form>
               </div>
             </div>

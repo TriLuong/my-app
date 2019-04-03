@@ -6,6 +6,7 @@ import Footer from "../../components/Footer";
 import { HomeContext } from "../Home";
 import data from "../../dataProductList.json";
 import firebase from "../../firebase";
+import { Link } from "react-router-dom";
 
 import { checkPropTypes } from "prop-types";
 
@@ -28,20 +29,25 @@ function RegisterPage(props) {
     const target = event.target;
     const value = target.value;
     const name = target.name;
-    setRegisterInfo({...RegisterInfo, [name]:value});
-  }
+    setRegisterInfo({ ...RegisterInfo, [name]: value });
+  };
 
   const SubmitHandler = async event => {
     event.preventDefault();
-    try{
-      const result = await firebase.auth().createUserWithEmailAndPassword(RegisterInfo.email,RegisterInfo.password);
+    try {
+      const result = await firebase
+        .auth()
+        .createUserWithEmailAndPassword(
+          RegisterInfo.email,
+          RegisterInfo.password
+        );
       console.log(result);
-      props.history.push({pathname: "/login"});
-    } catch(err){
+      props.history.push({ pathname: "/login" });
+    } catch (err) {
       console.log(err);
       setError("* " + err.message);
     }
-  }
+  };
   return (
     <Provider
       value={{
@@ -62,7 +68,7 @@ function RegisterPage(props) {
             <div className="col-lg-8 offset-lg-2">
               <div className="basic-login">
                 <h3 className="text-center mb-60">Signup From</h3>
-                <p style={{color: "red"}}>{error}</p>
+                <p style={{ color: "red" }}>{error}</p>
                 <form action="#" onSubmit={SubmitHandler}>
                   <label htmlFor="name">
                     Username <span>**</span>
@@ -101,7 +107,9 @@ function RegisterPage(props) {
                   <div className="or-divide">
                     <span>or</span>
                   </div>
-                  <button className="btn theme-btn w-100">login Now</button>
+                  <Link to="/login">
+                    <button className="btn theme-btn w-100">login Now</button>
+                  </Link>
                 </form>
               </div>
             </div>
