@@ -7,17 +7,17 @@ import {
 const initialState = {
   result: null,
   load: false,
-  fail: null
+  error: null
 };
 
 export default function productListReducer(state = initialState, action) {
   switch (action.type) {
     case PRODUCT_LIST_REQUEST:
-      return { ...state, load: true, result: action.type };
+      return { ...state, load: true };
     case PRODUCT_LIST_SUCCESS:
-      return { ...state, load: false, result: action.type };
+      return { ...state, load: false, result: action.payload };
     case PRODUCT_LIST_FAIL:
-      return { ...state, load: false, result: action.type };
+      return { ...state, load: false, error: action.error };
     default:
       return { ...state };
   }

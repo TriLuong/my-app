@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import data from "./dataProductList.json";
 import PrivateRoute from "./privateRouter";
 import withLazy from "./hoc/withLazy";
+import store from "./redux/store";
+import { Provider } from "react-redux";
 
 import "./index.css";
 // import Home from "./pages/Home";
@@ -20,15 +22,17 @@ const RegisterPage = withLazy(() => import("./pages/Register"));
 const NotFound = withLazy(() => import("./pages/NotFound"));
 
 ReactDOM.render(
-  <Router>
-    <Switch>
-      <Route exact path="/" component={Home} />
-      <PrivateRoute path="/product/:id" component={ProductDetail} />
-      <Route path="/login" component={LoginPage} />
-      <Route path="/register" component={RegisterPage} />
-      <Route component={NotFound} />
-    </Switch>
-  </Router>,
+  <Provider store={store}>
+    <Router>
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <PrivateRoute path="/product/:id" component={ProductDetail} />
+        {/* <Route path="/login" component={LoginPage} />
+        <Route path="/register" component={RegisterPage} /> */}
+        <Route component={NotFound} />
+      </Switch>
+    </Router>
+  </Provider>,
   document.getElementById("root")
 );
 

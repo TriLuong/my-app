@@ -11,15 +11,29 @@ export function productListRequest() {
 }
 
 //Action Creator
-export function productListSuccess() {
+export function productListSuccess(data) {
   return {
-    type: PRODUCT_LIST_SUCCESS
+    type: PRODUCT_LIST_SUCCESS,
+    payload: data
   };
 }
 
 //Action Creator
-export function productListFail() {
+export function productListFail(error) {
   return {
-    type: PRODUCT_LIST_FAIL
+    type: PRODUCT_LIST_FAIL,
+    error: error
+  };
+}
+
+export function getProducts() {
+  return dispatch => {
+    dispatch(productListRequest());
+    return fetch(
+      "https://mapi.sendo.vn/mob/product/cat/phu-kien-cong-nghe/phu-kien-may-tinh-laptop/usb/?p=1"
+    )
+      .then(r => r.json())
+      .then(r => dispatch(productListSuccess(r.data)))
+      .catch(error => dispatch(productListFail(error)));
   };
 }

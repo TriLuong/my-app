@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect}from "react";
 import ProductItem from "../ProductItem";
 import SearchWidget from "./SearchWidget"
 import data from "../../dataProductList.json";
@@ -9,7 +9,12 @@ import shopBanner from "../../assets/shop-banner.jpg";
 
 import { HomeContext } from "../../pages/Home";
 
-export default function ProductList() {
+export default function ProductList(props) {
+  console.log("props ProducList", props);
+  useEffect(() => {
+    props.getProducts()
+  }, [])
+  console.log("props ProducList2", props);
   const value = React.useContext(HomeContext);
   // console.log("value.dataSort ", value.dataSort);
 
@@ -46,29 +51,29 @@ export default function ProductList() {
   };
 
   const onClickAZ = () => {
-    value.setDataSort([...value.dataSort.sort(sortAZ)]);
-    console.log("value.dataSort", value.dataSort);
+    // value.setDataSort([...value.dataSort.sort(sortAZ)]);
+    // console.log("value.dataSort", value.dataSort);
   };
 
   const onClickZA = () => {
-    value.setDataSort([...value.dataSort.sort(sortZA)]);
-    console.log("value.dataSort", value.dataSort);
+    // value.setDataSort([...value.dataSort.sort(sortZA)]);
+    // console.log("value.dataSort", value.dataSort);
   };
 
   const onClickH2L = () => {
     
-    value.setDataSort([...value.dataSort.sort(sortH2L)]);
-    console.log("value.dataSort", value.dataSort);
+    // value.setDataSort([...value.dataSort.sort(sortH2L)]);
+    // console.log("value.dataSort", value.dataSort);
   };
 
   const onClickL2H = () => {
-    value.setDataSort([...value.dataSort.sort(sortL2H)]);
-    console.log("value.dataSort", value.dataSort);
+    // value.setDataSort([...value.dataSort.sort(sortL2H)]);
+    // console.log("value.dataSort", value.dataSort);
   };
 
   const ocClickTopSale = () => {
-    value.setDataSort([...value.dataSort.sort(sortTopSale)]);
-    console.log("value.dataSort", value.dataSort);
+    // value.setDataSort([...value.dataSort.sort(sortTopSale)]);
+    // console.log("value.dataSort", value.dataSort);
   };
 
   return (  
@@ -95,7 +100,7 @@ export default function ProductList() {
                 aria-labelledby="home-tab"
               >
                 <div className="row">
-                  {value.dataSort.map((elemt, index) => {
+                  {props.products && props.products.map((elemt, index) => {
                     return (
                       <ProductItem key={elemt.id} index={index} {...elemt} />
                     );

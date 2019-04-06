@@ -5,6 +5,7 @@ import Footer from "../../components/Footer";
 import ProductList from "../../components/ProductList";
 import data from "../../dataProductList.json";
 import store from "../../redux/store";
+import ProducListContainer from "../../components/ProductList/Product.container"
 import {
   loginRequest,
   loginSuccess,
@@ -31,25 +32,25 @@ import {
 
 // import cartContextProvider from "../../hooks/cartContext";
 
-store.subscribe(()=>{
-  const state = store.getState();
-  console.log(state);
-});
-store.dispatch(loginRequest());
-store.dispatch(loginSuccess());
-store.dispatch(loginFail());
+// store.subscribe(()=>{
+//   const state = store.getState();
+//   console.log(state);
+// });
+// store.dispatch(loginRequest());
+// store.dispatch(loginSuccess());
+// store.dispatch(loginFail());
 
-store.dispatch(registerRequest());
-store.dispatch(registerSuccess());
-store.dispatch(registerFail());
+// store.dispatch(registerRequest());
+// store.dispatch(registerSuccess());
+// store.dispatch(registerFail());
 
-store.dispatch(productDetailRequest());
-store.dispatch(productDetailSuccess());
-store.dispatch(productDetailFail());
+// store.dispatch(productDetailRequest());
+// store.dispatch(productDetailSuccess());
+// store.dispatch(productDetailFail());
 
-store.dispatch(productListRequest());
-store.dispatch(productListSuccess());
-store.dispatch(productListFail());
+// store.dispatch(productListRequest());
+// store.dispatch(productListSuccess());
+// store.dispatch(productListFail());
 
 
 export const HomeContext = React.createContext(0);
@@ -82,20 +83,11 @@ function Home() {
     }
   };
   return (
-    <Provider
-      value={{
-        dataSort,
-        setDataSort,
-        product,
-        setProductSelect,
-        countProduct,
-        setCountProduct
-      }}
-    >
-      <Header />
-      <ProductList />
+    <>
+      {/* <Header /> */}
+      <ProducListContainer />
       <Footer />
-    </Provider>
+    </>
   );
 }
 
