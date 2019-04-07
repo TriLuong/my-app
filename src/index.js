@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import data from "./dataProductList.json";
+// import data from "./dataProductList.json";
 import PrivateRoute from "./privateRouter";
 import withLazy from "./hoc/withLazy";
 import store from "./redux/store";
@@ -17,8 +17,12 @@ import * as serviceWorker from "./serviceWorker";
 
 const Home = withLazy(() => import("./pages/Home"));
 const ProductDetail = withLazy(() => import("./pages/ProductDetail"));
-const LoginPage = withLazy(() => import("./pages/Login"));
-const RegisterPage = withLazy(() => import("./pages/Register"));
+// const LoginPage = withLazy(() => import("./pages/Login"));
+const LoginContainer = withLazy(() => import("./pages/Login/Login.container"));
+// const RegisterPage = withLazy(() => import("./pages/Register"));
+const RegisterContainer = withLazy(() =>
+  import("./pages/Register/Register.container")
+);
 const NotFound = withLazy(() => import("./pages/NotFound"));
 
 ReactDOM.render(
@@ -27,8 +31,8 @@ ReactDOM.render(
       <Switch>
         <Route exact path="/" component={Home} />
         <PrivateRoute path="/product/:id" component={ProductDetail} />
-        {/* <Route path="/login" component={LoginPage} />
-        <Route path="/register" component={RegisterPage} /> */}
+        <Route path="/login" component={LoginContainer} />
+        <Route path="/register" component={RegisterContainer} />
         <Route component={NotFound} />
       </Switch>
     </Router>

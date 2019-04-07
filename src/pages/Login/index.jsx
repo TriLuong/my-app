@@ -5,7 +5,6 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import { HomeContext } from "../Home";
 import data from "../../dataProductList.json";
-import firebase from "../../firebase";
 import { Link } from "react-router-dom";
 import { Z_STREAM_ERROR } from "zlib";
 
@@ -14,7 +13,6 @@ function LoginPage(props) {
   console.log("props of LoginPage", props);
   // const [state, setState] = useState({})
   // const value = React.useContext(HomeContext);
-  const [error, setError] = useState("");
   const [total, setTotal] = useState(0);
   const [product, setProduct] = useState([]);
   const [countProduct, setCountProduct] = useState(0);
@@ -28,18 +26,9 @@ function LoginPage(props) {
     setLoginInfo({ ...LoginInfo, [name]: value });
   };
 
-  const SubmitHandler = async event => {
+  const SubmitHandler = event => {
     event.preventDefault();
-    try {
-      console.log("props.location.state.from", props.location.state.from);
-      const result = await firebase
-        .auth()
-        .signInWithEmailAndPassword(LoginInfo.email, LoginInfo.password);
-      console.log("result", result);
-      props.history.push({ pathname: props.location.state.from });
-    } catch (err) {
-      setError("* " + err.message);
-    }
+    props.checkLogin(LoginInfo);
   };
   return (
     <Provider
@@ -91,7 +80,7 @@ function LoginPage(props) {
                       <a href="#">Lost your password?</a>
                     </span>
                   </div>
-                  <p style={{ color: "red" }}>{error}</p>
+                  <p style={{ color: "red" }}>{props.error}</p>
                   <button className="btn theme-btn-2 w-100" type="submit">
                     Login Now
                   </button>

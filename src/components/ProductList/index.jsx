@@ -1,13 +1,14 @@
 import React, {useEffect}from "react";
 import ProductItem from "../ProductItem";
 import SearchWidget from "./SearchWidget"
-import data from "../../dataProductList.json";
+// import data from "../../dataProductList.json";
 import recentProduct3 from "../../assets/shop-rsp3.jpg";
 import recentProduct2 from "../../assets/shop-rsp2.jpg";
 import recentProduct4 from "../../assets/shop-rsp4.jpg";
 import shopBanner from "../../assets/shop-banner.jpg";
 
 import { HomeContext } from "../../pages/Home";
+import Loading from "../Loading";
 
 export default function ProductList(props) {
   console.log("props ProducList", props);
@@ -76,6 +77,11 @@ export default function ProductList(props) {
     // console.log("value.dataSort", value.dataSort);
   };
 
+  const productLength = props.products && props.products.length || 0
+  if(props.load){
+    return <Loading></Loading>
+  }
+
   return (  
     <section className="shop-area pt-150 pb-100">
       <div className="container">
@@ -86,7 +92,7 @@ export default function ProductList(props) {
               <div className="col-xl-5 col-lg-6 col-md-6">
                 <div className="product-showing mb-40">
                   <p>
-                    Showing 1–{data.length} of {data.length} results
+                    Showing 1–{productLength} of {productLength} results
                   </p>
                 </div>
               </div>

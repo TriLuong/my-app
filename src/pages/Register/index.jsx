@@ -32,21 +32,22 @@ function RegisterPage(props) {
     setRegisterInfo({ ...RegisterInfo, [name]: value });
   };
 
-  const SubmitHandler = async event => {
+  const SubmitHandler = event => {
     event.preventDefault();
-    try {
-      const result = await firebase
-        .auth()
-        .createUserWithEmailAndPassword(
-          RegisterInfo.email,
-          RegisterInfo.password
-        );
-      console.log(result);
-      props.history.push({ pathname: "/login" });
-    } catch (err) {
-      console.log(err);
-      setError("* " + err.message);
-    }
+    props.checkRegister(RegisterInfo)
+    // try {
+    //   const result = await firebase
+    //     .auth()
+    //     .createUserWithEmailAndPassword(
+    //       RegisterInfo.email,
+    //       RegisterInfo.password
+    //     );
+    //   console.log(result);
+    //   props.history.push({ pathname: "/login" });
+    // } catch (err) {
+    //   console.log(err);
+    //   setError("* " + err.message);
+    // }
   };
   return (
     <Provider
@@ -68,7 +69,7 @@ function RegisterPage(props) {
             <div className="col-lg-8 offset-lg-2">
               <div className="basic-login">
                 <h3 className="text-center mb-60">Signup From</h3>
-                <p style={{ color: "red" }}>{error}</p>
+                <p style={{ color: "red" }}>{props.error}</p>
                 <form action="#" onSubmit={SubmitHandler}>
                   <label htmlFor="name">
                     Username <span>**</span>

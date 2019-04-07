@@ -1,9 +1,9 @@
 import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAIL } from "./Login.action";
 
 const initialState = {
-  result: null,
+  result: false,
   load: false,
-  fail: null
+  error: null
 };
 
 export default function loginReducer(state = initialState, action) {
@@ -11,9 +11,9 @@ export default function loginReducer(state = initialState, action) {
     case LOGIN_REQUEST:
       return { ...state, load: true };
     case LOGIN_SUCCESS:
-      return { ...state, load: false, result: action.payload };
+      return { ...state, load: false, result: action.result, error: "" };
     case LOGIN_FAIL:
-      return { ...state, load: false, fail: action.error };
+      return { ...state, load: false, error: action.error };
     default:
       return state;
   }
