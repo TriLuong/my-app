@@ -1,31 +1,10 @@
 import React from "react";
-import { HomeContext } from "../../pages/Home";
+import store from "../../redux/store";
+import { deleteProducts } from "../../redux/ProductItem/ProductItem.action";
 
 export default function Cart(props) {
-  // console.log(props);
-  const value = React.useContext(HomeContext);
-
-  const findIndex = id => {
-    var result = -1;
-    value.product.forEach((elemt, index) => {
-      if (elemt.id === id) {
-        elemt.state = "";
-        result = index;
-      }
-    });
-    return result;
-  };
-
   const deleteProduct = () => {
-    // setState();
-    value.setCountProduct(value.countProduct - 1);
-    if (value.countProduct < 0) value.setCountProduct(0);
-
-    value.product.forEach((elemt, index) => {
-      if (elemt.id === props.id) {
-        value.product.splice(findIndex(props.id), 1);
-      }
-    });
+    store.dispatch(deleteProducts(props));
   };
   return (
     <li>

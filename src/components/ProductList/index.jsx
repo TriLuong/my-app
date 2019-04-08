@@ -1,22 +1,18 @@
 import React, {useEffect}from "react";
-import ProductItem from "../ProductItem";
+import ProductItemContainer from "../ProductItem/ProductItem.container"
 import SearchWidget from "./SearchWidget"
-// import data from "../../dataProductList.json";
 import recentProduct3 from "../../assets/shop-rsp3.jpg";
 import recentProduct2 from "../../assets/shop-rsp2.jpg";
 import recentProduct4 from "../../assets/shop-rsp4.jpg";
 import shopBanner from "../../assets/shop-banner.jpg";
-
-import { HomeContext } from "../../pages/Home";
 import Loading from "../Loading";
 
 export default function ProductList(props) {
-  console.log("props ProducList", props);
+  // console.log("props ProducList", props);
   useEffect(() => {
     props.getProducts()
   }, [])
-  console.log("props ProducList2", props);
-  const value = React.useContext(HomeContext);
+  // console.log("props ProducList2", props);
   // console.log("value.dataSort ", value.dataSort);
 
   const sortAZ = (a, b) => {
@@ -108,7 +104,7 @@ export default function ProductList(props) {
                 <div className="row">
                   {props.products && props.products.map((elemt, index) => {
                     return (
-                      <ProductItem key={elemt.id} index={index} {...elemt} />
+                      <ProductItemContainer key={elemt.id} index={index} {...elemt} />
                     );
                   })}
                 </div>

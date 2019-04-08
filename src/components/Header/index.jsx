@@ -1,18 +1,20 @@
 import React from "react";
 import logo from "../../assets/logo_shop.png";
-import { HomeContext } from "../../pages/Home";
 import Cart from "../Cart";
 import {Link} from "react-router-dom"
+import store from "../../redux/store"
 
-export default function Header() {
-  const value = React.useContext(HomeContext);
-  // console.log("value.product", (value.product));
-  // console.log("...value.product", [{...value.product}]);
+export default function Header(props) {
+  console.log("props of Header", props)
   let total = 0;
-  value.product.forEach((elemt, index) => {
-    total += elemt.final_price * elemt.quantity;
-  });
-  
+  const countProduct = store.getState().productItemReducer.count;
+  const productsSelected = store.getState().productItemReducer.result;
+  // console.log("productsSelected in Header", productsSelected);
+  if (productsSelected!==null){
+    productsSelected.forEach((elemt, index) => {
+      total += elemt.final_price * elemt.quantity;
+  })}
+     
   return (
     <header>
       <div id="header-sticky" className="header-area box-90 sticky-header">
@@ -125,12 +127,13 @@ export default function Header() {
                   <li className="d-shop-cart">
                     <a href="#">
                       <i className="fas fa-shopping-cart" />{" "}
-                      <span className="cart-count">{value.countProduct}</span>
+                      <span className="cart-count">{countProduct}</span>
                     </a>
                     <ul className="minicart">
-                      {value.countProduct !== 0
-                        ? value.product.map((elemt, index) => {
-                            return <Cart key={elemt.id} {...elemt} />;
+                      {productsSelected !== null 
+                        ? productsSelected.map((elemt, index) => {
+                            return elemt.quantity !==0 ? 
+                            <Cart key={index} {...elemt} />:"";
                           })
                         : ""}
                       <li>

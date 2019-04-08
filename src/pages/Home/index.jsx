@@ -1,34 +1,28 @@
 import React, { useState } from "react";
 import "./Home.css";
-import Header from "../../components/Header";
+import HeaderContainer from "../../components/Header/Header.container"
 import Footer from "../../components/Footer";
-import ProductList from "../../components/ProductList";
 import data from "../../dataProductList.json";
-import store from "../../redux/store";
 import ProducListContainer from "../../components/ProductList/Product.container"
-import {
-  loginRequest,
-  loginSuccess,
-  loginFail
-} from "../../redux/Login/Login.action";
 
-import {
-  registerRequest,
-  registerSuccess,
-  registerFail,
-} from "../../redux/Register/Register.action"
+// import {
+//   loginRequest,
+//   loginSuccess,
+//   loginFail
+// } from "../../redux/Login/Login.action";
 
-import {
-  productDetailRequest,
-  productDetailSuccess,
-  productDetailFail
-}from "../../redux/ProductDetail/ProductDetail.action"
+// import {
+//   registerRequest,
+//   registerSuccess,
+//   registerFail,
+// } from "../../redux/Register/Register.action"
 
-import {
-  productListRequest,
-  productListSuccess,
-  productListFail
-} from "../../redux/ProductList/ProductList.action"
+
+// import {
+//   productListRequest,
+//   productListSuccess,
+//   productListFail
+// } from "../../redux/ProductList/ProductList.action"
 
 // import cartContextProvider from "../../hooks/cartContext";
 
@@ -84,7 +78,7 @@ function Home() {
   };
   return (
     <>
-      {/* <Header /> */}
+      <HeaderContainer />
       <ProducListContainer />
       <Footer />
     </>

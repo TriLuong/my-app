@@ -1,22 +1,12 @@
 import React, { useState } from "react";
 import { withRouter } from "react-router-dom";
-
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
-import { HomeContext } from "../Home";
-import data from "../../dataProductList.json";
 import { Link } from "react-router-dom";
 import { Z_STREAM_ERROR } from "zlib";
 
-const Provider = HomeContext.Provider;
 function LoginPage(props) {
-  console.log("props of LoginPage", props);
-  // const [state, setState] = useState({})
-  // const value = React.useContext(HomeContext);
-  const [total, setTotal] = useState(0);
-  const [product, setProduct] = useState([]);
-  const [countProduct, setCountProduct] = useState(0);
-  const [dataSort, setDataSort] = useState(data);
+  // console.log("props of LoginPage", props);
   const [LoginInfo, setLoginInfo] = useState({ email: "", password: "" });
 
   const ChangeHandler = event => {
@@ -31,18 +21,7 @@ function LoginPage(props) {
     props.checkLogin(LoginInfo);
   };
   return (
-    <Provider
-      value={{
-        dataSort,
-        setDataSort,
-        total,
-        setTotal,
-        product,
-        setProduct,
-        countProduct,
-        setCountProduct
-      }}
-    >
+    <>
       <Header />
       <section className="login-area pt-100 pb-100">
         <div className="container">
@@ -99,7 +78,7 @@ function LoginPage(props) {
         </div>
       </section>
       <Footer />
-    </Provider>
+    </>
   );
 }
 

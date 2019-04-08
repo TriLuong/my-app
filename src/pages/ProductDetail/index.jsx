@@ -1,10 +1,11 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
-import data from "../../dataProductList.json";
+import store from "../../redux/store"
 
 function ProductDetail(props) {
   console.log(props);
-  const product = data.find(elemt => {
+  const products = store.getState().productListReducer.result;
+  const product = products.find(elemt => {
     return elemt.id.toString() === props.match.params.id;
   });
   console.log(product);
