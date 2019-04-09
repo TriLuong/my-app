@@ -17,6 +17,9 @@ import * as serviceWorker from "./serviceWorker";
 
 const Home = withLazy(() => import("./pages/Home"));
 const ProductDetail = withLazy(() => import("./pages/ProductDetail"));
+const ProductDetailContainer = withLazy(() =>
+  import("./pages/ProductDetail/ProductDetail.container")
+);
 // const LoginPage = withLazy(() => import("./pages/Login"));
 const LoginContainer = withLazy(() => import("./pages/Login/Login.container"));
 // const RegisterPage = withLazy(() => import("./pages/Register"));
@@ -30,7 +33,7 @@ ReactDOM.render(
     <Router>
       <Switch>
         <Route exact path="/" component={Home} />
-        <PrivateRoute path="/product/:id" component={ProductDetail} />
+        <PrivateRoute path="/product/:id" component={ProductDetailContainer} />
         <Route path="/login" component={LoginContainer} />
         <Route path="/register" component={RegisterContainer} />
         <Route component={NotFound} />

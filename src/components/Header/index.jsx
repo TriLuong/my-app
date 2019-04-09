@@ -5,7 +5,7 @@ import {Link} from "react-router-dom"
 import store from "../../redux/store"
 
 export default function Header(props) {
-  console.log("props of Header", props)
+  // console.log("props of Header", props)
   let total = 0;
   const countProduct = store.getState().productItemReducer.count;
   const productsSelected = store.getState().productItemReducer.result;

@@ -13,10 +13,10 @@ export function loginRequest() {
 }
 
 //Action Creator
-export function loginSuccess() {
+export function loginSuccess(data) {
   return {
     type: LOGIN_SUCCESS,
-    result: true
+    result: data
   };
 }
 
@@ -37,7 +37,7 @@ export function checkLogin(loginInfo) {
         .auth()
         .signInWithEmailAndPassword(loginInfo.email, loginInfo.password);
       console.log("LoginInfo", loginInfo);
-      return dispatch(loginSuccess());
+      return dispatch(loginSuccess(loginInfo));
     } catch (error) {
       return dispatch(loginFail("* " + error.message));
     }

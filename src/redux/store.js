@@ -4,6 +4,7 @@ import registerReducer from "./Register/Register.reducer";
 import productListReducer from "./ProductList/ProductList.reducer";
 import productItemReducer from "./ProductItem/ProductItem.reducer";
 import headerReducer from "./Header/Header.reducer";
+import productDetailReducer from "./ProductDetail/ProductDetail.reducer";
 import thunk from "redux-thunk";
 
 const reducer = combineReducers({
@@ -11,7 +12,8 @@ const reducer = combineReducers({
   registerReducer,
   productListReducer,
   headerReducer,
-  productItemReducer
+  productItemReducer,
+  productDetailReducer
 });
 
 const store = createStore(

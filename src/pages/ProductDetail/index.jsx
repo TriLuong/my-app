@@ -1,14 +1,18 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { withRouter } from "react-router-dom";
-import store from "../../redux/store"
+import store from "../../redux/store";
 
 function ProductDetail(props) {
-  console.log(props);
-  const products = store.getState().productListReducer.result;
-  const product = products.find(elemt => {
-    return elemt.id.toString() === props.match.params.id;
-  });
-  console.log(product);
+  const [state, setState] = useState([]);
+  console.log("props of ProductDetail",props)
+  const product = props.result;
+  useEffect(() => {
+    props.getProduct(props.match.params.id);
+  }, []);
+
+  if (!product)
+    return <p>Loading...</p>
+
   return (
     <>
       <section className="shop-details-area pt-100 pb-100">
@@ -85,12 +89,12 @@ function ProductDetail(props) {
                   <a href="#">decor,</a>
                   <a href="#">furniture</a>
                 </div>
-                <h2 className="pro-details-title mb-15">
-                  {product.name}
-                </h2>
+                <h2 className="pro-details-title mb-15">{product.name}</h2>
                 <div className="details-price mb-20">
                   <span>{product.final_price.toLocaleString()} VND</span>
-                  <span className="old-price">{product.price.toLocaleString()} VND</span>
+                  <span className="old-price">
+                    {product.price.toLocaleString()} VND
+                  </span>
                 </div>
                 <div className="product-variant">
                   <div className="product-color variant-item">
@@ -186,7 +190,7 @@ function ProductDetail(props) {
                       <form action="#">
                         <div className="plus-minus">
                           <div className="cart-plus-minus">
-                            <input type="text" value="1" />
+                            <input type="text" />
                           </div>
                         </div>
                         <button className="details-action-icon" type="submit">
