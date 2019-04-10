@@ -2,7 +2,8 @@ import {connect} from "react-redux"
 import Header from "./"
 
 const mapStateToProps = state => ({
-    load: state.headerReducer.load
+    productCount: state.productItemReducer.count,
+    productSelected: state.productItemReducer.result
 })
 
 export default connect (mapStateToProps)(Header);

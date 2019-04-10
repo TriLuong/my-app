@@ -33,12 +33,7 @@ export function getProducts() {
       "https://mapi.sendo.vn/mob/product/cat/phu-kien-cong-nghe/phu-kien-may-tinh-laptop/usb/?p=1"
     )
       .then(r => r.json())
-      .then(r => {
-        const dataNew = r.data.map((element, index) => {
-          return { ...element, quantity: 0, state: "" };
-        });
-        dispatch(productListSuccess(dataNew));
-      })
+      .then(r => dispatch(productListSuccess(r.data)))
       .catch(error => dispatch(productListFail(error)));
   };
 }

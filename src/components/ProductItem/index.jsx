@@ -6,8 +6,8 @@ export default function ProductItem(props) {
   // const [state, setState] = useState("");
 
   const select = () => {
-    props.setProductSelect(props);
-  };
+    props.selectProducts(props);
+  };  
 
   return (
     <div className="col-xl-4 col-lg-6 col-md-6">
@@ -27,7 +27,7 @@ export default function ProductItem(props) {
         </div>
         <div className="product-content pr-0">
           <div className="pro-cat mb-10">
-            <a href="#">USB {props.state}</a>
+            <a href="#">USB</a>
           </div>
           <h4>
             <a href="#">{props.name}</a>

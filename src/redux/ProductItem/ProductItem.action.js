@@ -1,7 +1,3 @@
-import store from "../store";
-import { productListSuccess } from "../ProductList/ProductList.action";
-import { headerReload } from "../Header/Header.action";
-
 export const PRODUCT_ITEM_REQUEST = "PRODUCT_ITEM_REQUEST";
 export const PRODUCT_ITEM_SUCCESS = "PRODUCT_ITEM_SUCCESS";
 export const PRODUCT_ITEM_COUNT = "PRODUCT_ITEM_COUNT";
@@ -26,50 +22,49 @@ export function productItemCount(count) {
   };
 }
 
-export function setProductSelect(product) {
+export function selectProducts(product) {
   // console.log("product.id, product.quantity", product.id, product.quantity);
-  const products = store.getState().productListReducer.result;
-  const countProduct = store.getState().productItemReducer.count;
-  return dispatch => {
+
+  return (dispatch, getState) => {
     dispatch(productItemRequest());
-    const productSelected = { ...product };
-    products.forEach((elemt, index) => {
-      if (elemt.id === productSelected.id) {
-        elemt.quantity = elemt.quantity + 1;
-        elemt.state = "(Selected)";
-        productSelected.quantity += 1;
+    const productsSelectedArr = getState().productItemReducer.result;
+    //Select fist product
+    if (productsSelectedArr === null) {
+      dispatch(
+        productItemSuccess([{ ...product, quantity: 1, state: "(Selected)" }])
+      );
+    } else {
+      const producSelected = productsSelectedArr.find((elemt, index) => {
+        if (elemt.id === product.id) {
+          productsSelectedArr[index].quantity += 1;
+          dispatch(productItemSuccess([...productsSelectedArr]));
+          return elemt;
+        }
+      });
+      // console.log("producSelected", producSelected != null);
+      if (producSelected == null) {
+        dispatch(
+          productItemSuccess([
+            ...productsSelectedArr,
+            { ...product, quantity: 1 }
+          ])
+        );
       }
-    });
-    dispatch(productListSuccess([...products]));
-    dispatch(headerReload());
-    // dispatch(headerRequest());
-    if (productSelected.quantity === 1) {
-      dispatch(productItemCount(countProduct + 1));
     }
-    // console.log("b");
-    dispatch(productItemSuccess([...products]));
+    dispatch(productItemCount(getState().productItemReducer.result.length));
   };
 }
 
 export function deleteProducts(product) {
-  const products = store.getState().productListReducer.result;
-  const countProduct = store.getState().productItemReducer.count;
-  return dispatch => {
+  return (dispatch, getState) => {
     dispatch(productItemRequest());
-    const productSelected = { ...product };
-    products.forEach((elemt, index) => {
-      if (elemt.id === productSelected.id) {
-        elemt.quantity = 0;
-        elemt.state = "";
-        productSelected.quantity = 0;
-        console.log("index delete", index);
+    const productsSelectedArr = getState().productItemReducer.result;
+    productsSelectedArr.forEach((elemt, index) => {
+      if (elemt.id === product.id) {
+        productsSelectedArr.splice(index, 1);
       }
     });
-    dispatch(productListSuccess([...products]));
-    console.log("products", products);
-    console.log("a");
-    dispatch(headerReload());
-    console.log("b");
-    dispatch(productItemCount(countProduct - 1));
+    dispatch(productItemSuccess([...productsSelectedArr]));
+    dispatch(productItemCount(getState().productItemReducer.result.length));
   };
 }

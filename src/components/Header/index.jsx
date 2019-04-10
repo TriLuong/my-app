@@ -2,14 +2,12 @@ import React from "react";
 import logo from "../../assets/logo_shop.png";
 import Cart from "../Cart";
 import {Link} from "react-router-dom"
-import store from "../../redux/store"
 
 export default function Header(props) {
   // console.log("props of Header", props)
   let total = 0;
-  const countProduct = store.getState().productItemReducer.count;
-  const productsSelected = store.getState().productItemReducer.result;
-  // console.log("productsSelected in Header", productsSelected);
+  const countProduct = props.productCount;
+  const productsSelected = props.productSelected;
   if (productsSelected!==null){
     productsSelected.forEach((elemt, index) => {
       total += elemt.final_price * elemt.quantity;
