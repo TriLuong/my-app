@@ -46,7 +46,7 @@ export function selectProducts(product) {
         dispatch(
           productItemSuccess([
             ...productsSelectedArr,
-            { ...product, quantity: 1 }
+            { ...product, quantity: 1, state: "(Selected)" }
           ])
         );
       }
