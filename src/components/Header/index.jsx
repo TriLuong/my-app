@@ -4,7 +4,7 @@ import Cart from "../Cart";
 import {Link} from "react-router-dom"
 
 export default function Header(props) {
-  // console.log("props of Header", props)
+  console.log("props of Header", props)
   let total = 0;
   const countProduct = props.productCount;
   const productsSelected = props.productSelected;
