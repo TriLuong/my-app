@@ -42,7 +42,7 @@ export default function ProductItem(props) {
         </div>
         <div className="product-content pr-0">
           <div className="pro-cat mb-10">
-            <a href="#">USB {state}</a>
+            <a href="#">{props.shop_name} {state}</a>
           </div>
           <h4>
             <a href="#">{props.name}</a>
