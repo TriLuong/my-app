@@ -28,7 +28,7 @@ export default function ProductItem(props) {
     <div className="col-xl-4 col-lg-6 col-md-6">
       <div className="product-wrapper mb-50">
         <div className="product-img mb-25">
-          <a href="#">
+          <a href="javascript:void(0)">
             <img src={props.img_url} alt="" />
           </a>
           <div className="product-action text-center">
@@ -42,10 +42,10 @@ export default function ProductItem(props) {
         </div>
         <div className="product-content pr-0">
           <div className="pro-cat mb-10">
-            <a href="#">{props.shop_name} {state}</a>
+            <a href="javascript:void(0)">{props.shop_name} {state}</a>
           </div>
           <h4>
-            <a href="#">{props.name}</a>
+            <a href="javascript:void(0)">{props.name}</a>
           </h4>
           <div className="product-meta">
             <div className="pro-price">

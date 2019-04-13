@@ -51,3 +51,10 @@ export function searchProducts(input) {
       .catch(error => dispatch(productListFail(error)));
   };
 }
+
+export function sortProducts(data) {
+  return dispatch => {
+    dispatch(productListRequest());
+    dispatch(productListSuccess(data));
+  };
+}

@@ -16,6 +16,11 @@ export default function ProductList(props) {
   console.log("props ProducList2", props);
   // console.log("value.dataSort ", value.dataSort);
 
+  const productLength = props.products && props.products.length || 0
+  if(props.load){
+    return <Loading></Loading>
+  }
+
   const sortAZ = (a, b) => {
     let nameA = a.name.toUpperCase();
     let nameB = b.name.toUpperCase();
@@ -49,35 +54,36 @@ export default function ProductList(props) {
   };
 
   const onClickAZ = () => {
+    props.sortProducts([...props.products.sort(sortAZ)]);
     // value.setDataSort([...value.dataSort.sort(sortAZ)]);
     // console.log("value.dataSort", value.dataSort);
   };
 
   const onClickZA = () => {
+    props.sortProducts([...props.products.sort(sortZA)]);
     // value.setDataSort([...value.dataSort.sort(sortZA)]);
     // console.log("value.dataSort", value.dataSort);
   };
 
   const onClickH2L = () => {
-    
+    props.sortProducts([...props.products.sort(sortH2L)]);
     // value.setDataSort([...value.dataSort.sort(sortH2L)]);
     // console.log("value.dataSort", value.dataSort);
   };
 
   const onClickL2H = () => {
+    props.sortProducts([...props.products.sort(sortL2H)]);
     // value.setDataSort([...value.dataSort.sort(sortL2H)]);
     // console.log("value.dataSort", value.dataSort);
   };
 
   const ocClickTopSale = () => {
+    props.sortProducts([...props.products.sort(sortTopSale)]);
     // value.setDataSort([...value.dataSort.sort(sortTopSale)]);
     // console.log("value.dataSort", value.dataSort);
   };
 
-  const productLength = props.products && props.products.length || 0
-  if(props.load){
-    return <Loading></Loading>
-  }
+  
 
   return (  
     <section className="shop-area pt-150 pb-100">
@@ -129,27 +135,27 @@ export default function ProductList(props) {
                 <h3 className="shop-title">SHOP BY</h3>
                 <ul className="shop-link">
                   <li>
-                    <a onClick={onClickAZ}>
+                    <a href="javascript:void(0)" onClick={onClickAZ}>
                       Name: A-Z
                     </a>
                   </li>
                   <li>
-                    <a onClick={onClickZA}>
+                    <a href="javascript:void(0)" onClick={onClickZA}>
                       Name: Z-A
                     </a>
                   </li>
                   <li>
-                    <a onClick={onClickH2L}>
+                    <a href="javascript:void(0)" onClick={onClickH2L}>
                       Price: High to Low
                     </a>
                   </li>
                   <li>
-                    <a onClick={onClickL2H}>
+                    <a href="javascript:void(0)" onClick={onClickL2H}>
                       Price: Low to High
                     </a>
                   </li>
                   <li>
-                    <a onClick={ocClickTopSale}>
+                    <a href="javascript:void(0)" onClick={ocClickTopSale}>
                       Product: Top Sales
                     </a>
                   </li>
@@ -161,7 +167,7 @@ export default function ProductList(props) {
                 <ul className="shop-sidebar-product">
                   <li>
                     <div className="side-pro-img">
-                      <a href="#">
+                      <a href="javascript:void(0)">
                         <img src={recentProduct3} alt="" />
                       </a>
                     </div>
@@ -174,7 +180,7 @@ export default function ProductList(props) {
                         <i className="fas fa-star" />
                       </div>
                       <h5>
-                        <a href="#">Raglan Baseball-Style</a>
+                        <a href="javascript:void(0)">Raglan Baseball-Style</a>
                       </h5>
                       <div className="side-pro-price">
                         <span>$119.00 USD</span>
@@ -183,7 +189,7 @@ export default function ProductList(props) {
                   </li>
                   <li>
                     <div className="side-pro-img">
-                      <a href="#">
+                      <a href="javascript:void(0)">
                         <img src={recentProduct2} alt="" />
                       </a>
                     </div>
@@ -196,7 +202,7 @@ export default function ProductList(props) {
                         <i className="fas fa-star" />
                       </div>
                       <h5>
-                        <a href="#">Raglan Baseball-Style</a>
+                        <a href="javascript:void(0)">Raglan Baseball-Style</a>
                       </h5>
                       <div className="side-pro-price">
                         <span>$119.00 USD</span>
@@ -205,7 +211,7 @@ export default function ProductList(props) {
                   </li>
                   <li>
                     <div className="side-pro-img">
-                      <a href="#">
+                      <a href="javascript:void(0)">
                         <img src={recentProduct4} alt="" />
                       </a>
                     </div>
@@ -218,7 +224,7 @@ export default function ProductList(props) {
                         <i className="fas fa-star" />
                       </div>
                       <h5>
-                        <a href="#">Raglan Baseball-Style</a>
+                        <a href="javascript:void(0)">Raglan Baseball-Style</a>
                       </h5>
                       <div className="side-pro-price">
                         <span>$119.00 USD</span>
@@ -230,7 +236,7 @@ export default function ProductList(props) {
 
               <div className="shop-widget">
                 <div className="shop-sidebar-banner">
-                  <a href="#">
+                  <a href="javascript:void(0)">
                     <img src={shopBanner} alt="" />
                   </a>
                 </div>
