@@ -15,4 +15,4 @@ const mapDispatchToProps = {
     deleteProducts: deleteProducts
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(ProductItem,Header,Cart)
+export default connect(mapStateToProps,mapDispatchToProps)(ProductItem)

@@ -1,6 +1,7 @@
 import React, {useEffect}from "react";
 import ProductItemContainer from "../ProductItem/ProductItem.container"
 import SearchWidget from "./SearchWidget"
+import SearchContainer from "./SearchWidget/Search.container"
 import recentProduct3 from "../../assets/shop-rsp3.jpg";
 import recentProduct2 from "../../assets/shop-rsp2.jpg";
 import recentProduct4 from "../../assets/shop-rsp4.jpg";
@@ -102,10 +103,13 @@ export default function ProductList(props) {
                 aria-labelledby="home-tab"
               >
                 <div className="row">
-                  {props.products && props.products.map((elemt, index) => {
+                  {props.productsSearch ? props.productsSearch.map((elemt, index) => {
                     return (
                       <ProductItemContainer key={elemt.id} index={index} {...elemt} />
-                    );
+                    )}) : props.products && props.products.map((elemt, index) => {
+                    return (
+                      <ProductItemContainer key={elemt.id} index={index} {...elemt} />
+                    )})
                   })}
                 </div>
               </div>
@@ -114,7 +118,7 @@ export default function ProductList(props) {
           {/*<!--SideBar -->*/}
           <div className="col-xl-3 col-lg-4">
             <div className="sidebar-shop">
-              <SearchWidget></SearchWidget>
+              <SearchContainer></SearchContainer>
               {/*<!-- 
                             <div className="shop-widget">
                                 <h3 className="shop-title">Filter selection</h3>

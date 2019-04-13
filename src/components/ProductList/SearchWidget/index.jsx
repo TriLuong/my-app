@@ -1,8 +1,9 @@
 import React from "react";
 import { HomeContext } from "../../../pages/Home";
 
-export default function SerchWidget() {
+export default function SerchWidget(props) {
   const [inputValue, setInputValue] = React.useState();
+  console.log("Search",props)
 
   const ChangeHandler = event => {
     var target = event.target;
@@ -14,7 +15,9 @@ export default function SerchWidget() {
 
   const SubmitHandler = event => {
     event.preventDefault();
-    // console.log(inputValue);
+    console.log("inputValue",(inputValue.search));
+    props.getProducts(inputValue.search.split(' ').join('+'));
+    // console.log("Search Product",props.products);
   };
   return (
     <div className="shop-widget">

@@ -3,6 +3,7 @@ import loginReducer from "./Login/Login.reducer";
 import registerReducer from "./Register/Register.reducer";
 import productListReducer from "./ProductList/ProductList.reducer";
 import productItemReducer from "./ProductItem/ProductItem.reducer";
+import searchReducer from "./Search/Search.reducer";
 // import headerReducer from "./Header/Header.reducer";
 import productDetailReducer from "./ProductDetail/ProductDetail.reducer";
 import thunk from "redux-thunk";
@@ -13,7 +14,8 @@ const reducer = combineReducers({
   productListReducer,
   // headerReducer,
   productItemReducer,
-  productDetailReducer
+  productDetailReducer,
+  searchReducer
 });
 
 const store = createStore(

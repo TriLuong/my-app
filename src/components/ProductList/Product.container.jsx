@@ -5,6 +5,7 @@ import ProductList from "./";
 const mapStateToProps = state => ({
   products: state.productListReducer.result,
   error: state.productListReducer.error,
+  productsSearch: state.searchReducer.result,
   load: state.productListReducer.load
 });
 
