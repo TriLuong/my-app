@@ -1,18 +1,12 @@
 import { connect } from "react-redux";
-import { getProducts } from "../../../redux/Search/Search.action";
+import { searchProducts } from "../../../redux/ProductList/ProductList.action";
 import Search from "./";
 
-const mapStateToProps = state => ({
-  products: state.searchReducer.result,
-  error: state.searchReducer.error,
-  load: state.searchReducer.load
-});
-
 const mapDispatchToProps = {
-  getProducts: getProducts
+  searchProducts: searchProducts
 };
 
 export default connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps
 )(Search);

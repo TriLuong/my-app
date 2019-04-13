@@ -37,3 +37,17 @@ export function getProducts() {
       .catch(error => dispatch(productListFail(error)));
   };
 }
+
+export function searchProducts(input) {
+  return dispatch => {
+    dispatch(productListRequest());
+    // console.log("input", input);
+    // const linkProduct =
+    //   "https://mapi.sendo.vn/mob/product/search?p=1&q=" + input;
+    // console.log(linkProduct);
+    return fetch(`https://mapi.sendo.vn/mob/product/search?p=1&q=${input}`)
+      .then(r => r.json())
+      .then(r => dispatch(productListSuccess(r.data)))
+      .catch(error => dispatch(productListFail(error)));
+  };
+}

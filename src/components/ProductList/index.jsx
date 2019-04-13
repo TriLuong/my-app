@@ -13,7 +13,7 @@ export default function ProductList(props) {
   useEffect(() => {
     props.getProducts()
   }, [])
-  // console.log("props ProducList2", props);
+  console.log("props ProducList2", props);
   // console.log("value.dataSort ", value.dataSort);
 
   const sortAZ = (a, b) => {
@@ -103,14 +103,11 @@ export default function ProductList(props) {
                 aria-labelledby="home-tab"
               >
                 <div className="row">
-                  {props.productsSearch ? props.productsSearch.map((elemt, index) => {
-                    return (
-                      <ProductItemContainer key={elemt.id} index={index} {...elemt} />
-                    )}) : props.products && props.products.map((elemt, index) => {
+                  {props.products && props.products.map((elemt, index) => {
                     return (
                       <ProductItemContainer key={elemt.id} index={index} {...elemt} />
                     )})
-                  })}
+                  }
                 </div>
               </div>
             </div>
