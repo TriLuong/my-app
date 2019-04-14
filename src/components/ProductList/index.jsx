@@ -95,7 +95,7 @@ export default function ProductList(props) {
               <div className="col-xl-5 col-lg-6 col-md-6">
                 <div className="product-showing mb-40">
                   <p>
-                    Showing 1–{productLength} of {productLength} results
+                    Hiển thị 1–{productLength} của {productLength} sản phẩm
                   </p>
                 </div>
               </div>
@@ -132,38 +132,38 @@ export default function ProductList(props) {
                             </div> -->*/}
 
               <div className="shop-widget">
-                <h3 className="shop-title">SHOP BY</h3>
+                <h3 className="shop-title">Sắp xếp theo</h3>
                 <ul className="shop-link">
                   <li>
                     <a href="javascript:void(0)" onClick={onClickAZ}>
-                      Name: A-Z
+                      Tên: A-Z
                     </a>
                   </li>
                   <li>
                     <a href="javascript:void(0)" onClick={onClickZA}>
-                      Name: Z-A
+                      Tên: Z-A
                     </a>
                   </li>
                   <li>
                     <a href="javascript:void(0)" onClick={onClickH2L}>
-                      Price: High to Low
+                      Giá: Giảm dần
                     </a>
                   </li>
                   <li>
                     <a href="javascript:void(0)" onClick={onClickL2H}>
-                      Price: Low to High
+                      Giá: Tăng dần
                     </a>
                   </li>
                   <li>
                     <a href="javascript:void(0)" onClick={ocClickTopSale}>
-                      Product: Top Sales
+                      Top Sales
                     </a>
                   </li>
                 </ul>
               </div>
 
               <div className="shop-widget">
-                <h3 className="shop-title">Recent Product</h3>
+                <h3 className="shop-title">Sản phẩm gần đây</h3>
                 <ul className="shop-sidebar-product">
                   <li>
                     <div className="side-pro-img">
@@ -183,7 +183,7 @@ export default function ProductList(props) {
                         <a href="javascript:void(0)">Raglan Baseball-Style</a>
                       </h5>
                       <div className="side-pro-price">
-                        <span>$119.00 USD</span>
+                        <span>119,000 VND</span>
                       </div>
                     </div>
                   </li>
@@ -205,7 +205,7 @@ export default function ProductList(props) {
                         <a href="javascript:void(0)">Raglan Baseball-Style</a>
                       </h5>
                       <div className="side-pro-price">
-                        <span>$119.00 USD</span>
+                        <span>119,000 VND</span>
                       </div>
                     </div>
                   </li>
@@ -227,7 +227,7 @@ export default function ProductList(props) {
                         <a href="javascript:void(0)">Raglan Baseball-Style</a>
                       </h5>
                       <div className="side-pro-price">
-                        <span>$119.00 USD</span>
+                        <span>119,000 VND</span>
                       </div>
                     </div>
                   </li>

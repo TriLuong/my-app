@@ -21,50 +21,9 @@ export default function Header(props) {
           <div className="row align-items-center">
             <div className="col-xl-2 col-lg-6 col-md-6 col-7 col-sm-5 d-flex align-items-center pos-relative">
               <div className="logo">
-                <a href="#">
+                <Link to="/">
                   <img src={logo} alt="" />
-                </a>
-              </div>
-
-              <div className="category-menu">
-                <h4>Category</h4>
-                <ul>
-                  <li>
-                    <a href="#">
-                      <i className="fas fa-shopping-cart" /> Table lamp
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i className="fas fa-shopping-cart" /> Furniture
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i className="fas fa-shopping-cart" /> Chair
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i className="fas fa-shopping-cart" /> Men
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i className="fas fa-shopping-cart" /> Women
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i className="fas fa-shopping-cart" /> Cloth
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i className="fas fa-shopping-cart" /> Trend
-                    </a>
-                  </li>
-                </ul>
+                </Link>
               </div>
             </div>
             <div className="col-xl-8 col-lg-6 col-md-8 col-8 d-none d-xl-block">
@@ -72,36 +31,16 @@ export default function Header(props) {
                 <nav id="mobile-menu" style={{ display: "block" }}>
                   <ul>
                     <li>
-                      <Link to="/">Home</Link>
+                      <Link to="/">Trang chủ</Link>
                     </li>
                     <li>
-                      <a href="#">Products </a>
+                      <a href="#">Sản Phẩm </a>
                     </li>
                     <li>
-                      <a href="#">Pages</a>
-                      <ul className="submenu">
-                        <li>
-                          <a href="#">About Us</a>
-                        </li>
-                        <li>
-                          <a href="#">Contact Us</a>
-                        </li>
-                        <li>
-                          <Link to="/login">login</Link>
-                        </li>
-                        <li>
-                          <Link to="/register">Register</Link>
-                        </li>
-                        <li>
-                          <a href="#">Shoping Cart</a>
-                        </li>
-                        <li>
-                          <a href="#">Checkout</a>
-                        </li>
-                      </ul>
+                      <a href="#">Liên hệ</a>
                     </li>
                     <li>
-                      <a href="#">Contact</a>
+                      <a href="#">Giới thiệu</a>
                     </li>
                   </ul>
                 </nav>
@@ -137,15 +76,15 @@ export default function Header(props) {
                         : ""}
                       <li>
                         <div className="total-price">
-                          <span className="f-left">Total:</span>
+                          <span className="f-left">Tổng cộng:</span>
                           <span className="f-right">{total.toLocaleString()} VND</span>
                         </div>
                       </li>
                       <li>
                         <div className="checkout-link">
-                          <a href="#">Shopping Cart</a>
+                          <a href="#">Giỏ hàng</a>
                           <a className="red-color" href="#">
-                            Checkout
+                            Kiểm tra giỏ hàng
                           </a>
                         </div>
                       </li>

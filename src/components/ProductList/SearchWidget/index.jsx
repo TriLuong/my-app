@@ -21,12 +21,12 @@ export default function SerchWidget(props) {
   };
   return (
     <div className="shop-widget">
-      <h3 className="shop-title">Search by</h3>
+      <h3 className="shop-title">Tìm kiếm</h3>
       <form action="#" className="shop-search" onSubmit={SubmitHandler}>
         <input
           name="search"
           type="text"
-          placeholder="Your keyword...."
+          placeholder="Nhập tên sản phẩm..."
           onChange={ChangeHandler}
         />
         <button type="submit">

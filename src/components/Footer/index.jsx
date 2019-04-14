@@ -29,7 +29,7 @@ export default function Footer() {
                     <img src={time} alt="" />
                   </div>
                   <div className="time-text">
-                    <span>Got Questions ? Call us 24/7!</span>
+                    <span>Hotline</span>
                     <h2>(0600) 874 548</h2>
                   </div>
                 </div>
@@ -37,7 +37,7 @@ export default function Footer() {
             </div>
             <div className="col-xl-2 col-lg-3 col-md-3">
               <div className="footer-widget mb-40">
-                <h3>Social Media</h3>
+                <h3>Kết nối</h3>
                 <ul className="footer-link">
                   <li>
                     <a href="#">Facebook</a>
@@ -62,50 +62,47 @@ export default function Footer() {
             </div>
             <div className="col-xl-3 col-lg-2 col-md-3 d-md-none d-xl-block">
               <div className="footer-widget pl-50 mb-40">
-                <h3>Location</h3>
+                <h3>Chi nhánh</h3>
                 <ul className="footer-link">
                   <li>
-                    <a href="#">New York</a>
+                    <a href="#">Hà Nội</a>
                   </li>
                   <li>
-                    <a href="#">Tokyo</a>
+                    <a href="#">Hải Phòng</a>
                   </li>
                   <li>
-                    <a href="#">Dhaka</a>
+                    <a href="#">Đà Nẵng</a>
                   </li>
                   <li>
-                    <a href="#">Chittagong</a>
+                    <a href="#">Đà Lạt</a>
                   </li>
                   <li>
-                    <a href="#">China</a>
+                    <a href="#">Tp Hồ Chí Minh</a>
                   </li>
                   <li>
-                    <a href="#">Japan</a>
+                    <a href="#">Cần Thơ</a>
                   </li>
                 </ul>
               </div>
             </div>
             <div className="col-xl-2 col-lg-3 col-md-3">
               <div className="footer-widget mb-40">
-                <h3>About</h3>
+                <h3>Giới thiệu</h3>
                 <ul className="footer-link">
                   <li>
-                    <a href="#">Terms &amp; Conditions</a>
+                    <a href="#">Điều khoản sử dụng</a>
                   </li>
                   <li>
-                    <a href="#"> Privacy Policy</a>
+                    <a href="#"> Chính sách bảo mật</a>
                   </li>
                   <li>
-                    <a href="#">Contact Us</a>
+                    <a href="#">Liên Hệ</a>
                   </li>
                   <li>
-                    <a href="#">FAQ</a>
+                    <a href="#">Câu hỏi thường gặp</a>
                   </li>
                   <li>
-                    <a href="#">Wholesale</a>
-                  </li>
-                  <li>
-                    <a href="#">Direction</a>
+                    <a href="#">Tư vấn</a>
                   </li>
                 </ul>
               </div>
