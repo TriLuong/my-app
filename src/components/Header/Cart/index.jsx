@@ -1,6 +1,6 @@
 import React from "react";
-import store from "../../redux/store";
-import { deleteProducts } from "../../redux/ProductItem/ProductItem.action";
+import store from "../../../redux/store";
+import { deleteProducts } from "../../../redux/ProductItem/ProductItem.action";
 
 export default function Cart(props) {
   const deleteProduct = () => {

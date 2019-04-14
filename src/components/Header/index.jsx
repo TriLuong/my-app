@@ -1,18 +1,19 @@
 import React from "react";
 import logo from "../../assets/logo_shop.png";
-import Cart from "../Cart";
-import {Link} from "react-router-dom"
+import Cart from "./Cart";
+import { Link } from "react-router-dom"
 
 export default function Header(props) {
   console.log("props of Header", props)
   let total = 0;
   const countProduct = props.productCount;
   const productsSelected = props.productSelected;
-  if (productsSelected!==null){
+  if (productsSelected !== null) {
     productsSelected.forEach((elemt, index) => {
       total += elemt.final_price * elemt.quantity;
-  })}
-     
+    })
+  }
+
   return (
     <header>
       <div id="header-sticky" className="header-area box-90 sticky-header">
@@ -128,11 +129,11 @@ export default function Header(props) {
                       <span className="cart-count">{countProduct}</span>
                     </a>
                     <ul className="minicart">
-                      {productsSelected !== null 
+                      {productsSelected !== null
                         ? productsSelected.map((elemt, index) => {
-                            return elemt.quantity !==0 ? 
-                            <Cart key={index} {...elemt} />:"";
-                          })
+                          return elemt.quantity !== 0 ?
+                            <Cart key={index} {...elemt} /> : "";
+                        })
                         : ""}
                       <li>
                         <div className="total-price">
