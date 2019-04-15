@@ -1,6 +1,6 @@
 import React from "react";
 import logo from "../../assets/logo_shop.png";
-import Cart from "./Cart";
+import CartContainer from "./Cart/Cart.container";
 import { Link } from "react-router-dom"
 
 export default function Header(props) {
@@ -71,7 +71,7 @@ export default function Header(props) {
                       {productsSelected !== null
                         ? productsSelected.map((elemt, index) => {
                           return elemt.quantity !== 0 ?
-                            <Cart key={index} {...elemt} /> : "";
+                            <CartContainer key={index} {...elemt} /> : "";
                         })
                         : ""}
                       <li>

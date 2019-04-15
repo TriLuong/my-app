@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { withRouter } from "react-router-dom";
-import Header from "../../components/Header";
 import HeaderContainer from "../../components/Header/Header.container"
 import Footer from "../../components/Footer";
 import { Link } from "react-router-dom";

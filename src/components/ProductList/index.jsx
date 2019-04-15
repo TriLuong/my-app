@@ -1,6 +1,5 @@
 import React, {useEffect}from "react";
 import ProductItemContainer from "../ProductItem/ProductItem.container"
-import SearchWidget from "./SearchWidget"
 import SearchContainer from "./SearchWidget/Search.container"
 import recentProduct3 from "../../assets/shop-rsp3.jpg";
 import recentProduct2 from "../../assets/shop-rsp2.jpg";

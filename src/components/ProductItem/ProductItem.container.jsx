@@ -1,8 +1,6 @@
 import {connect} from "react-redux"
 import {selectProducts ,deleteProducts} from "../../redux/ProductItem/ProductItem.action"
 import ProductItem from "./"
-import Header from "../Header"
-import Cart from "../Header/Cart"
 
 const mapStateToProps = state =>({
     load: state.productItemReducer.load,

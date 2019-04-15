@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { withRouter } from "react-router-dom";
 import {LoadingDetail} from "../../components/Loading"
-import store from "../../redux/store";
 
 function ProductDetail(props) {
-  const [state, setState] = useState([]);
-  console.log("props of ProductDetail",props)
+  // console.log("props of ProductDetail",props)
   const product = props.result;
   useEffect(() => {
     props.getProduct(props.match.params.id);
