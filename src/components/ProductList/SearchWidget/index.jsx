@@ -16,7 +16,10 @@ export default function SerchWidget(props) {
   const SubmitHandler = event => {
     event.preventDefault();
     // console.log("inputValue",(inputValue.search));
-    props.searchProducts(inputValue.search.split(' ').join('+'));
+    try{
+      props.searchProducts(inputValue.search.split(' ').join('+'));
+    }catch{}
+    
     // console.log("Search Product",props.products);
   };
   return (

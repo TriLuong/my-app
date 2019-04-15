@@ -29,7 +29,7 @@ export function loginFail(error) {
 }
 
 export  function  checkLogin(loginInfo, props) {
-  return  async dispatch => {
+  return  async (dispatch, getState) => {
     dispatch(loginRequest());
     try {
       await firebase
@@ -38,7 +38,8 @@ export  function  checkLogin(loginInfo, props) {
       // console.log("LoginInfo", loginInfo);
       dispatch(loginSuccess(loginInfo));
       try{
-        props.history.push({ pathname: props.location.state.from });
+        getState().productListReducer.result.find((elemt)=>elemt.id===props.location.state.from)
+          props.history.push({ pathname: props.location.state.from });
       } catch{
         props.history.push({pathname: "/"})
       }

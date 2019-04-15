@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, { useState, useEffect} from "react";
 import { withRouter } from "react-router-dom";
 import HeaderContainer from "../../components/Header/Header.container";
 import Footer from "../../components/Footer";
@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { Z_STREAM_ERROR } from "zlib";
 
 function LoginPage(props) {
-  // console.log("props of LoginPage", props);
+  console.log("props of LoginPage", props);
   const [LoginInfo, setLoginInfo] = useState({ email: "", password: "" });
 
   const ChangeHandler = event => {
@@ -19,17 +19,6 @@ function LoginPage(props) {
   const SubmitHandler = event => {
     event.preventDefault();
     props.checkLogin(LoginInfo,props);
-    // console.log(" props.load",  props.load)
-    // if (props.error === null && props.load === false) {
-    //   try{
-    //     props.history.push({ pathname: props.location.state.from });
-    //   }
-    //   catch {
-    //     console.log("aaaa")
-    //     props.history.push({ pathname: "/" })
-    //   }
-      
-    // }
   };
 
   // console.log("props.error",props.error)

@@ -21,9 +21,9 @@ export default function Header(props) {
           <div className="row align-items-center">
             <div className="col-xl-2 col-lg-6 col-md-6 col-7 col-sm-5 d-flex align-items-center pos-relative">
               <div className="logo">
-                <Link to="/">
+                <a href="/">
                   <img src={logo} alt="" />
-                </Link>
+                </a>
               </div>
             </div>
             <div className="col-xl-8 col-lg-6 col-md-8 col-8 d-none d-xl-block">
@@ -31,16 +31,16 @@ export default function Header(props) {
                 <nav id="mobile-menu" style={{ display: "block" }}>
                   <ul>
                     <li>
-                      <Link to="/">Trang chủ</Link>
+                      <a href="/">Trang chủ</a>
                     </li>
                     <li>
-                      <a href="#">Sản Phẩm </a>
+                      <a href="javascrip:void(0)">Sản Phẩm </a>
                     </li>
                     <li>
-                      <a href="#">Liên hệ</a>
+                      <a href="javascrip:void(0)">Liên hệ</a>
                     </li>
                     <li>
-                      <a href="#">Giới thiệu</a>
+                      <a href="javascrip:void(0)">Giới thiệu</a>
                     </li>
                   </ul>
                 </nav>
@@ -63,7 +63,7 @@ export default function Header(props) {
                     </Link>
                   </li>
                   <li className="d-shop-cart">
-                    <a href="#">
+                    <a href="javascrip:void(0)">
                       <i className="fas fa-shopping-cart" />{" "}
                       <span className="cart-count">{countProduct}</span>
                     </a>
@@ -82,8 +82,8 @@ export default function Header(props) {
                       </li>
                       <li>
                         <div className="checkout-link">
-                          <a href="#">Giỏ hàng</a>
-                          <a className="red-color" href="#">
+                          <a href="javascrip:void(0">Giỏ hàng</a>
+                          <a className="red-color" href="javascrip:void(0)">
                             Kiểm tra giỏ hàng
                           </a>
                         </div>
