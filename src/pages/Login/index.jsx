@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from "react";
+import React, { useState} from "react";
 import { withRouter } from "react-router-dom";
 import HeaderContainer from "../../components/Header/Header.container";
 import Footer from "../../components/Footer";
@@ -8,10 +8,6 @@ import { Z_STREAM_ERROR } from "zlib";
 function LoginPage(props) {
   // console.log("props of LoginPage", props);
   const [LoginInfo, setLoginInfo] = useState({ email: "", password: "" });
-
-  // useEffect(() => {
-  //   props.checkLogin()
-  // }, [])
 
   const ChangeHandler = event => {
     const target = event.target;
