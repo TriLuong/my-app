@@ -6,6 +6,7 @@ import PrivateRoute from "./privateRouter";
 import withLazy from "./hoc/withLazy";
 import store from "./redux/store";
 import { Provider } from "react-redux";
+import Loading, { LoadingDetail, LoadingLogin, LoadingRegister } from "./components/Loading"
 
 import "./index.css";
 // import Home from "./pages/Home";
@@ -15,16 +16,16 @@ import "./index.css";
 // import NotFound from "./pages/NotFound";
 import * as serviceWorker from "./serviceWorker";
 
-const Home = withLazy(() => import("./pages/Home"));
-const ProductDetail = withLazy(() => import("./pages/ProductDetail"));
+const Home = withLazy(() => import("./pages/Home"), <Loading />);
+// const ProductDetail = withLazy(() => import("./pages/ProductDetail"), <LoadingDetail/>);
 const ProductDetailContainer = withLazy(() =>
-  import("./pages/ProductDetail/ProductDetail.container")
-);
+  import("./pages/ProductDetail/ProductDetail.container"), <LoadingDetail />);
+
 // const LoginPage = withLazy(() => import("./pages/Login"));
-const LoginContainer = withLazy(() => import("./pages/Login/Login.container"));
+const LoginContainer = withLazy(() => import("./pages/Login/Login.container"),<LoadingLogin />);
 // const RegisterPage = withLazy(() => import("./pages/Register"));
 const RegisterContainer = withLazy(() =>
-  import("./pages/Register/Register.container")
+  import("./pages/Register/Register.container"), <LoadingRegister />
 );
 const NotFound = withLazy(() => import("./pages/NotFound"));
 
