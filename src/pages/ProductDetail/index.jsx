@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { withRouter } from "react-router-dom";
 import {LoadingDetail} from "../../components/Loading"
+import HeaderContainer from "../../components/Header/Header.container";
+import Footer from "../../components/Footer"
 
 function ProductDetail(props) {
   // console.log("props of ProductDetail",props)
@@ -14,6 +16,7 @@ function ProductDetail(props) {
 
   return (
     <>
+      <HeaderContainer />
       <section className="shop-details-area pt-100 pb-100">
         <div className="container">
           <div className="row">
@@ -679,6 +682,7 @@ function ProductDetail(props) {
           </div>
         </div>
       </section>
+      <Footer />
     </>
   );
 }
