@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { withRouter } from "react-router-dom";
+import {LoadingDetail} from "../../components/Loading"
 import store from "../../redux/store";
 
 function ProductDetail(props) {
@@ -11,7 +12,7 @@ function ProductDetail(props) {
   }, []);
 
   if (!product)
-    return <p>Loading...</p>
+    return <LoadingDetail></LoadingDetail>
 
   return (
     <>
@@ -99,7 +100,7 @@ function ProductDetail(props) {
                 <div className="product-variant">
                   <div className="product-color variant-item">
                     <div className="variant-name">
-                      <span>Colors</span>
+                      <span>Màu sắc</span>
                     </div>
                     <ul className="shop-link shop-color">
                       <li>
@@ -137,7 +138,7 @@ function ProductDetail(props) {
 
                   <div className="product-size variant-item">
                     <div className="variant-name">
-                      <span>size</span>
+                      <span>Kích thước</span>
                     </div>
                     <ul className="shop-link shop-size">
                       <li>
@@ -170,17 +171,17 @@ function ProductDetail(props) {
                   <div className="product-info-list variant-item">
                     <ul>
                       <li>
-                        <span>Brands:</span> {product.name}
+                        <span>Thương hiệu:</span> {product.name}
                       </li>
                       <li>
                         <span>Product Code:</span> {product.id}
                       </li>
                       <li>
-                        <span>Reward Points:</span> {product.percent_star}
+                        <span>Đánh giá:</span> {product.percent_star}
                       </li>
                       <li>
-                        <span>Stock:</span>{" "}
-                        <span className="in-stock">In Stock</span>
+                        <span>Tình trạng:</span>{" "}
+                        <span className="in-stock">Còn hàng</span>
                       </li>
                     </ul>
                   </div>
@@ -201,7 +202,7 @@ function ProductDetail(props) {
                         </button>
                         <div className="details-cart mt-40">
                           <button className="btn theme-btn">
-                            purchase now
+                            mua ngay
                           </button>
                         </div>
                       </form>
@@ -225,7 +226,7 @@ function ProductDetail(props) {
                       aria-controls="home"
                       aria-selected="true"
                     >
-                      Description{" "}
+                      Mô tả{" "}
                     </a>
                   </li>
                   <li className="nav-item">
@@ -238,7 +239,7 @@ function ProductDetail(props) {
                       aria-controls="profile"
                       aria-selected="false"
                     >
-                      Reviews (2)
+                      Đánh giá (2)
                     </a>
                   </li>
                 </ul>
@@ -290,7 +291,7 @@ function ProductDetail(props) {
                           </div>
                           <div className="pro-commnets-text">
                             <h4>
-                              Roger West -<span>June 5, 2018</span>
+                              Roger West -<span>Ngày 5 Tháng 6, 2018</span>
                             </h4>
                             <div className="pro-rating">
                               <i className="far fa-star" />
@@ -312,7 +313,7 @@ function ProductDetail(props) {
                           </div>
                           <div className="pro-commnets-text">
                             <h4>
-                              Roger West -<span>June 5, 2018</span>
+                              Roger West -<span>Ngày 5 tháng 6, 2018</span>
                             </h4>
                             <div className="pro-rating">
                               <i className="far fa-star" />
@@ -330,9 +331,9 @@ function ProductDetail(props) {
                         </div>
                       </div>
                       <div className="review-box mt-50">
-                        <h4>Add a Review</h4>
+                        <h4>Thêm đánh giá</h4>
                         <div className="your-rating mb-40">
-                          <span>Your Rating:</span>
+                          <span>Điểm đánh giá của bạn:</span>
                           <div className="rating-list">
                             <a href="#">
                               <i className="far fa-star" />
@@ -354,7 +355,7 @@ function ProductDetail(props) {
                         <form className="review-form" action="#">
                           <div className="row">
                             <div className="col-xl-12">
-                              <label htmlFor="message">YOUR REVIEW</label>
+                              <label htmlFor="message">Đánh giá của bạn</label>
                               <textarea
                                 name="message"
                                 id="message"
@@ -363,16 +364,16 @@ function ProductDetail(props) {
                               />
                             </div>
                             <div className="col-xl-6">
-                              <label htmlFor="r-name">Name</label>
+                              <label htmlFor="r-name">Tên</label>
                               <input type="text" id="r-name" />
                             </div>
                             <div className="col-xl-6">
-                              <label htmlFor="r-email">Email</label>
+                              <label htmlFor="r-email">Địa chỉ Email</label>
                               <input type="email" id="r-email" />
                             </div>
                             <div className="col-xl-12">
                               <button className="btn theme-btn">
-                                Add your Review
+                                Thêm đánh giá
                               </button>
                             </div>
                           </div>
@@ -399,8 +400,8 @@ function ProductDetail(props) {
           <div className="row">
             <div className="col-xl-12">
               <div className="area-title text-center mb-50">
-                <h2>Releted Products</h2>
-                <p>Browse the huge variety of our products</p>
+                <h2>Sản phẩm liên quan</h2>
+                <p>Chúng tôi có nhiều sản phẩm đa dạng</p>
               </div>
             </div>
           </div>
@@ -445,8 +446,8 @@ function ProductDetail(props) {
                   </h4>
                   <div className="product-meta">
                     <div className="pro-price">
-                      <span>$119.00 USD</span>
-                      <span className="old-price">$230.00 USD</span>
+                      <span>119,000 VND</span>
+                      <span className="old-price">230,000 VND</span>
                     </div>
                   </div>
                   <div className="product-wishlist">
@@ -501,8 +502,8 @@ function ProductDetail(props) {
                   </h4>
                   <div className="product-meta">
                     <div className="pro-price">
-                      <span>$119.00 USD</span>
-                      <span className="old-price">$230.00 USD</span>
+                      <span>119,000 VND</span>
+                      <span className="old-price">230,000 VND</span>
                     </div>
                   </div>
                   <div className="product-wishlist">
@@ -553,8 +554,8 @@ function ProductDetail(props) {
                   </h4>
                   <div className="product-meta">
                     <div className="pro-price">
-                      <span>$119.00 USD</span>
-                      <span className="old-price">$230.00 USD</span>
+                      <span>119,000 VND</span>
+                      <span className="old-price">230,000 VND</span>
                     </div>
                   </div>
                   <div className="product-wishlist">
@@ -609,8 +610,8 @@ function ProductDetail(props) {
                   </h4>
                   <div className="product-meta">
                     <div className="pro-price">
-                      <span>$119.00 USD</span>
-                      <span className="old-price">$230.00 USD</span>
+                      <span>119,000 VND</span>
+                      <span className="old-price">230,000 VND</span>
                     </div>
                   </div>
                   <div className="product-wishlist">
@@ -665,8 +666,8 @@ function ProductDetail(props) {
                   </h4>
                   <div className="product-meta">
                     <div className="pro-price">
-                      <span>$119.00 USD</span>
-                      <span className="old-price">$230.00 USD</span>
+                      <span>119,000 VND</span>
+                      <span className="old-price">230,000 VND</span>
                     </div>
                   </div>
                   <div className="product-wishlist">

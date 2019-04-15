@@ -31,25 +31,25 @@ function LoginPage(props) {
           <div className="row">
             <div className="col-lg-8 offset-lg-2">
               <div className="basic-login">
-                <h3 className="text-center mb-60">Login From</h3>
+                <h3 className="text-center mb-60">Đăng nhập</h3>
                 <form action="#" onSubmit={SubmitHandler}>
                   <label htmlFor="name">
-                    Email Address <span>**</span>
+                    Tên đăng nhập / Email<span>**</span>
                   </label>
                   <input
                     id="name"
                     type="text"
-                    placeholder="Enter Username or Email address..."
+                    placeholder="Nhập tên đăng nhâp hoặc Email..."
                     name="email"
                     onChange={ChangeHandler}
                   />
                   <label htmlFor="pass">
-                    Password <span>**</span>
+                    Mật khẩu <span>**</span>
                   </label>
                   <input
                     id="pass"
                     type="password"
-                    placeholder="Enter password..."
+                    placeholder="Nhập mật khẩu..."
                     name="password"
                     onChange={ChangeHandler}
                   />
@@ -59,19 +59,19 @@ function LoginPage(props) {
                       <label htmlFor="remember">Remember me!</label>
                     </span>
                     <span className="forgot-login f-right">
-                      <a href="#">Lost your password?</a>
+                      <a href="#">Quên mật khẩu?</a>
                     </span>
                   </div>
                   <p style={{ color: "red" }}>{props.error}</p>
                   <button className="btn theme-btn-2 w-100" type="submit">
-                    Login Now
+                    Đăng nhập
                   </button>
                   <div className="or-divide">
-                    <span>or</span>
+                    <span>hoặc</span>
                   </div>
                   <Link to="/register">
                     <button className="btn theme-btn w-100">
-                      Register Now
+                      Đăng ký
                     </button>
                   </Link>
                 </form>
