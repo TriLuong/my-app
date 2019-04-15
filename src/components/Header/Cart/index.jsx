@@ -13,7 +13,7 @@ export default function Cart(props) {
         </div>{" "} */}
       <div className="cart-content">
         <h3>
-          <a href="#">{props.name}</a>
+          <a href="javascript:void(0)">{props.name}</a>
         </h3>
         <div className="cart-price">
           <span className="new">{props.final_price.toLocaleString()} VND</span>
@@ -28,7 +28,7 @@ export default function Cart(props) {
         </div>
       </div>
       <div className="del-icon">
-        <a href="#" onClick={deleteProduct}>
+        <a href="javascript:void(0)" onClick={deleteProduct}>
           <i className="far fa-trash-alt" />
         </a>
       </div>
