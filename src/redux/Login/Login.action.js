@@ -28,18 +28,24 @@ export function loginFail(error) {
   };
 }
 
-export function checkLogin(loginInfo) {
-  return async dispatch => {
+export  function  checkLogin(loginInfo, props) {
+  return  async dispatch => {
     dispatch(loginRequest());
-
     try {
       await firebase
         .auth()
         .signInWithEmailAndPassword(loginInfo.email, loginInfo.password);
       // console.log("LoginInfo", loginInfo);
-      return dispatch(loginSuccess(loginInfo));
+      dispatch(loginSuccess(loginInfo));
+      try{
+        props.history.push({ pathname: props.location.state.from });
+      } catch{
+        props.history.push({pathname: "/"})
+      }
+      
     } catch (error) {
-      return dispatch(loginFail("* " + error.message));
+      console.log("error.message",error.message)
+      dispatch(loginFail("* " + error.message));
     }
   };
 }

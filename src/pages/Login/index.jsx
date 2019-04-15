@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect} from "react";
 import { withRouter } from "react-router-dom";
 import HeaderContainer from "../../components/Header/Header.container";
 import Footer from "../../components/Footer";
@@ -9,6 +9,10 @@ function LoginPage(props) {
   // console.log("props of LoginPage", props);
   const [LoginInfo, setLoginInfo] = useState({ email: "", password: "" });
 
+  // useEffect(() => {
+  //   props.checkLogin()
+  // }, [])
+
   const ChangeHandler = event => {
     const target = event.target;
     const value = target.value;
@@ -18,11 +22,21 @@ function LoginPage(props) {
 
   const SubmitHandler = event => {
     event.preventDefault();
-    props.checkLogin(LoginInfo);
-    if(props.error===null){
-     props.history.push({ pathname: props.location.state.from});
-    }
+    props.checkLogin(LoginInfo,props);
+    // console.log(" props.load",  props.load)
+    // if (props.error === null && props.load === false) {
+    //   try{
+    //     props.history.push({ pathname: props.location.state.from });
+    //   }
+    //   catch {
+    //     console.log("aaaa")
+    //     props.history.push({ pathname: "/" })
+    //   }
+      
+    // }
   };
+
+  // console.log("props.error",props.error)
   return (
     <>
       <HeaderContainer />

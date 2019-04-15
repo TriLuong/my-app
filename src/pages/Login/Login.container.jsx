@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import { checkLogin } from "../../redux/Login/Login.action";
-import Login from "./";
+import LoginPage from "./";
 
 const mapStateToProps = state => ({
   result: state.loginReducer.result,
@@ -15,4 +15,4 @@ const mapDispatchToPtops = {
 export default connect(
   mapStateToProps,
   mapDispatchToPtops
-)(Login);
+)(LoginPage);
