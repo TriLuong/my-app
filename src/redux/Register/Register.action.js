@@ -42,7 +42,7 @@ export function checkRegister(RegisterInfo) {
       // console.log(result);
       // props.history.push({ pathname: "/login" });
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       dispatch(registerFail("* " + err.message));
     }
   };

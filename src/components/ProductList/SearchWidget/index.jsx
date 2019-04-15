@@ -3,7 +3,7 @@ import { HomeContext } from "../../../pages/Home";
 
 export default function SerchWidget(props) {
   const [inputValue, setInputValue] = React.useState();
-  console.log("Search",props)
+  // console.log("Search",props)
 
   const ChangeHandler = event => {
     var target = event.target;
@@ -15,7 +15,7 @@ export default function SerchWidget(props) {
 
   const SubmitHandler = event => {
     event.preventDefault();
-    console.log("inputValue",(inputValue.search));
+    // console.log("inputValue",(inputValue.search));
     props.searchProducts(inputValue.search.split(' ').join('+'));
     // console.log("Search Product",props.products);
   };

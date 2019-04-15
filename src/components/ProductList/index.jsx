@@ -12,7 +12,7 @@ export default function ProductList(props) {
   useEffect(() => {
     props.getProducts()
   }, [])
-  console.log("props ProducList2", props);
+  // console.log("props ProducList2", props);
   // console.log("value.dataSort ", value.dataSort);
 
   const productLength = props.products && props.products.length || 0

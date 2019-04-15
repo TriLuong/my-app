@@ -4,10 +4,10 @@ import firebase from "./firebase"
 
 
 export default function PrivateRoute({ component: Component, ...rest }) {
-  console.log("rest", rest);
-  console.log("component", Component);
+  // console.log("rest", rest);
+  // console.log("component", Component);
   const isAuthen = firebase.auth().currentUser;
-  console.log(isAuthen)
+  // console.log(isAuthen)
   return (
     <Route
       {...rest}

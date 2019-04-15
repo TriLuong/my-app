@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { Z_STREAM_ERROR } from "zlib";
 
 function LoginPage(props) {
-  console.log("props of LoginPage", props);
+  // console.log("props of LoginPage", props);
   const [LoginInfo, setLoginInfo] = useState({ email: "", password: "" });
 
   const ChangeHandler = event => {

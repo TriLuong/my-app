@@ -36,7 +36,7 @@ export function checkLogin(loginInfo) {
       await firebase
         .auth()
         .signInWithEmailAndPassword(loginInfo.email, loginInfo.password);
-      console.log("LoginInfo", loginInfo);
+      // console.log("LoginInfo", loginInfo);
       return dispatch(loginSuccess(loginInfo));
     } catch (error) {
       return dispatch(loginFail("* " + error.message));
