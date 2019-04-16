@@ -28,7 +28,7 @@
 /* 1. Theme default css */
 @import url('https://fonts.googleapis.com/css?family=Rubik:300,400,500,700');
  body {
-	font-family: 'Rubik', sans-serif;
+	font-family: 'Tahoma', sans-serif;
 	font-weight: normal;
 	font-style: normal;
 	font-size: 14px;
@@ -81,8 +81,8 @@ button:focus,input:focus,input:focus,textarea,textarea:focus{outline: 0}
 	text-transform: capitalize;
 }
 h1, h2, h3, h4, h5, h6 {
-	font-family: 'Rubik', sans-serif;
-	font-weight: normal;
+	font-family: 'Tahoma', sans-serif;
+	font-weight: bold;
 	color: #10111e;
 	margin-top: 0px;
 	font-style: normal;
