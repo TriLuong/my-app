@@ -1,4 +1,4 @@
-import React, {useEffect}from "react";
+import React, { useEffect } from "react";
 import ProductItemContainer from "../ProductItem/ProductItem.container"
 import SearchContainer from "./SearchWidget/Search.container"
 import recentProduct3 from "../../assets/shop-rsp3.jpg";
@@ -15,8 +15,42 @@ export default function ProductList(props) {
   // console.log("props ProducList2", props);
   // console.log("value.dataSort ", value.dataSort);
 
+  const recentProducts = props.products && props.products.filter((elemt, index) => {
+    return index < 3;
+  })
+  console.log("recentProducts", recentProducts);
+
+  const elemtRecentProduct = recentProducts && recentProducts.map((elemt, index) => {
+    return <li key={index}>
+      <div className="side-pro-img">
+        <a href="javascript:void(0)">
+          <img src={elemt.img_url} alt="" />
+        </a>
+      </div>
+      <div className="side-pro-content">
+        <div className="side-pro-rating">
+          <i className="fas fa-star" />
+          <i className="fas fa-star" />
+          <i className="fas fa-star" />
+          <i className="fas fa-star" />
+          <i className="fas fa-star" />
+        </div>
+        <h5>
+          <a href="javascript:void(0)">{elemt.name}</a>
+        </h5>
+        <div className="side-pro-price">
+          <span>{elemt.final_price.toLocaleString()} VND</span>
+        </div>
+        {elemt.is_promotion === 1 ? (
+          <div >
+            <del style={{color: "#bcbdce"}}>{elemt.price.toLocaleString()} VND</del>
+          </div>
+        ) : ("")}
+      </div>
+    </li>
+  })
   const productLength = props.products && props.products.length || 0
-  if(props.load){
+  if (props.load) {
     return <Loading></Loading>
   }
 
@@ -82,9 +116,9 @@ export default function ProductList(props) {
     // console.log("value.dataSort", value.dataSort);
   };
 
-  
 
-  return (  
+
+  return (
     <section className="shop-area pt-150 pb-100">
       <div className="container">
         <div className="row">
@@ -111,7 +145,8 @@ export default function ProductList(props) {
                   {props.products && props.products.map((elemt, index) => {
                     return (
                       <ProductItemContainer key={elemt.id} index={index} {...elemt} />
-                    )})
+                    )
+                  })
                   }
                 </div>
               </div>
@@ -164,72 +199,7 @@ export default function ProductList(props) {
               <div className="shop-widget">
                 <h3 className="shop-title">Sản phẩm gần đây</h3>
                 <ul className="shop-sidebar-product">
-                  <li>
-                    <div className="side-pro-img">
-                      <a href="javascript:void(0)">
-                        <img src={recentProduct3} alt="" />
-                      </a>
-                    </div>
-                    <div className="side-pro-content">
-                      <div className="side-pro-rating">
-                        <i className="fas fa-star" />
-                        <i className="fas fa-star" />
-                        <i className="fas fa-star" />
-                        <i className="fas fa-star" />
-                        <i className="fas fa-star" />
-                      </div>
-                      <h5>
-                        <a href="javascript:void(0)">Raglan Baseball-Style</a>
-                      </h5>
-                      <div className="side-pro-price">
-                        <span>119,000 VND</span>
-                      </div>
-                    </div>
-                  </li>
-                  <li>
-                    <div className="side-pro-img">
-                      <a href="javascript:void(0)">
-                        <img src={recentProduct2} alt="" />
-                      </a>
-                    </div>
-                    <div className="side-pro-content">
-                      <div className="side-pro-rating">
-                        <i className="fas fa-star" />
-                        <i className="fas fa-star" />
-                        <i className="fas fa-star" />
-                        <i className="fas fa-star" />
-                        <i className="fas fa-star" />
-                      </div>
-                      <h5>
-                        <a href="javascript:void(0)">Raglan Baseball-Style</a>
-                      </h5>
-                      <div className="side-pro-price">
-                        <span>119,000 VND</span>
-                      </div>
-                    </div>
-                  </li>
-                  <li>
-                    <div className="side-pro-img">
-                      <a href="javascript:void(0)">
-                        <img src={recentProduct4} alt="" />
-                      </a>
-                    </div>
-                    <div className="side-pro-content">
-                      <div className="side-pro-rating">
-                        <i className="fas fa-star" />
-                        <i className="fas fa-star" />
-                        <i className="fas fa-star" />
-                        <i className="fas fa-star" />
-                        <i className="fas fa-star" />
-                      </div>
-                      <h5>
-                        <a href="javascript:void(0)">Raglan Baseball-Style</a>
-                      </h5>
-                      <div className="side-pro-price">
-                        <span>119,000 VND</span>
-                      </div>
-                    </div>
-                  </li>
+                  {elemtRecentProduct}
                 </ul>
               </div>
 

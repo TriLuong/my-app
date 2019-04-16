@@ -567,6 +567,7 @@
 }
 .footer-area.pl-100.pr-100 {
 	padding: 0 15px;
+	box-shadow: 0 0 15px rgba(0,0,0,.1);
 }
 .footer-icon {
 	margin-top: 12px;

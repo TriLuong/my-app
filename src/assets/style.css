@@ -2246,6 +2246,8 @@ input.main-search-input:-ms-input-placeholder {
 }
 .side-pro-img img {
 	margin-right: 14px;
+	width: 150px;
+  height: 150px;
 }
 .side-pro-rating {
 	margin-bottom: 5px;
