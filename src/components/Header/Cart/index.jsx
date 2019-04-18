@@ -5,6 +5,7 @@ export default function Cart(props) {
    props.deleteProducts(props);
   };
   return (
+    <>
     <li>
       {/* <div className="cart-img">
           <a href="#">
@@ -33,5 +34,7 @@ export default function Cart(props) {
         </a>
       </div>
     </li>
+    <hr />
+    </>
   );
 }
