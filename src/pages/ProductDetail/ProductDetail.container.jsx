@@ -5,6 +5,7 @@ import ProductDetail from "./"
 const mapStateToProps = state => ({
     load: state.productDetailReducer.load,
     result: state.productDetailReducer.result,
+    productsSeleted: state.productItemReducer.result,
 })
 
 const mapDispatchToProps = {

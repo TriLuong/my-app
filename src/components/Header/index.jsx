@@ -21,9 +21,9 @@ export default function Header(props) {
           <div className="row align-items-center">
             <div className="col-xl-2 col-lg-6 col-md-6 col-7 col-sm-5 d-flex align-items-center pos-relative">
               <div className="logo">
-                <a href="/">
+                <Link to="/">
                   <img src={logo} alt="" />
-                </a>
+                </Link>
               </div>
             </div>
             <div className="col-xl-8 col-lg-6 col-md-8 col-8 d-none d-xl-block">
@@ -31,7 +31,7 @@ export default function Header(props) {
                 <nav id="mobile-menu" style={{ display: "block" }}>
                   <ul>
                     <li>
-                      <a href="/">Trang chủ</a>
+                      <Link to="/">Trang chủ</Link>
                     </li>
                     <li>
                       <a href="javascrip:void(0)">Sản Phẩm </a>
@@ -67,7 +67,7 @@ export default function Header(props) {
                       <i className="fas fa-shopping-cart" />{" "}
                       <span className="cart-count">{countProduct}</span>
                     </a>
-                    <ul className="minicart">
+                    <ul className="minicart" >
                       {productsSelected !== null
                         ? productsSelected.map((elemt, index) => {
                           return elemt.quantity !== 0 ?
@@ -81,11 +81,8 @@ export default function Header(props) {
                         </div>
                       </li>
                       <li>
-                        <div className="checkout-link">
-                          <a href="javascrip:void(0">Giỏ hàng</a>
-                          <a className="red-color" href="javascrip:void(0)">
-                            Kiểm tra giỏ hàng
-                          </a>
+                        <div className="checkout-link" style={{position: "sticky"}}>
+                          <Link to="/checkout">Kiểm tra giỏ hàng</Link>
                         </div>
                       </li>
                     </ul>

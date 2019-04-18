@@ -574,6 +574,8 @@ label {
 /* minicart */
 .header-right ul.minicart {
 	background: #fff;
+	max-height:400px;
+	overflow-y:auto;
 	opacity: 0;
 	padding: 25px;
 	position: absolute;
@@ -664,6 +666,21 @@ ul.minicart .cart-price span {
 	text-transform: uppercase;
 	letter-spacing: 2px;
 }
+
+.checkout-link a {
+	background: #84b77c;
+	color: #fff;
+	border: 1px;
+	/* display: block; */
+	font-weight: 500;
+	padding: 16px 30px;
+	text-align: center;
+	font-size: 13px;
+	margin-bottom: 8px;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+}
+
 .header-right ul li .minicart .checkout-link a:last-child{margin: 0;}
 .header-right ul li .minicart .checkout-link a:hover,.header-right ul li .minicart .checkout-link a.red-color{background: #fe4536;}
 .header-right ul li .minicart .checkout-link a.red-color:hover{background: #84b77c;}

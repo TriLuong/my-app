@@ -7,6 +7,7 @@ import withLazy from "./hoc/withLazy";
 import store from "./redux/store";
 import { Provider } from "react-redux";
 import Loading, { LoadingDetail, LoadingLogin, LoadingRegister } from "./components/Loading"
+import CheckoutContainer from "./components/Header/Checkout/Checkout.container"
 
 import "./index.css";
 // import Home from "./pages/Home";
@@ -37,6 +38,7 @@ ReactDOM.render(
         <PrivateRoute path="/product/:id" component={ProductDetailContainer} />
         <Route path="/login" component={LoginContainer} />
         <Route path="/register" component={RegisterContainer} />
+        <Route path="/checkout" component={CheckoutContainer}/>
         <Route component={NotFound} />
       </Switch>
     </Router>
