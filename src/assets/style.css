@@ -574,8 +574,6 @@ label {
 /* minicart */
 .header-right ul.minicart {
 	background: #fff;
-	max-height:400px;
-	overflow-y:auto;
 	opacity: 0;
 	padding: 25px;
 	position: absolute;

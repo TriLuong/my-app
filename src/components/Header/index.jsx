@@ -68,12 +68,14 @@ export default function Header(props) {
                       <span className="cart-count">{countProduct}</span>
                     </a>
                     <ul className="minicart" >
+                      <ul style={{	maxHeight:"350px",	overflow:"auto"}}>
                       {productsSelected !== null
                         ? productsSelected.map((elemt, index) => {
                           return elemt.quantity !== 0 ?
                             <CartContainer key={index} {...elemt} /> : "";
                         })
                         : ""}
+                      </ul>
                       <li>
                         <div className="total-price">
                           <span className="f-left">Tổng cộng:</span>
@@ -81,7 +83,7 @@ export default function Header(props) {
                         </div>
                       </li>
                       <li>
-                        <div className="checkout-link" style={{position: "sticky"}}>
+                        <div className="checkout-link">
                           <Link to="/checkout">Kiểm tra giỏ hàng</Link>
                         </div>
                       </li>
