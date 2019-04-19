@@ -73,7 +73,7 @@ export default function Checkout(props) {
                         <br />
                         <div style={{ textAlign: "center" }}>
                             <div className="checkout-link">
-                                <a href="/" style={{ background: "blue" }}>Đặt hàng</a>
+                                <Link to="/order" style={{ background: "blue" }}>Đặt hàng</Link>
                                 <span>                </span>
                                 <Link to="/" >Tiếp tục mua sắm</Link>
                             </div>

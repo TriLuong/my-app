@@ -63,8 +63,8 @@ export default function Header(props) {
                     </Link>
                   </li>
                   <li className="d-shop-cart">
-                    <a href="javascrip:void(0)">
-                      <i className="fas fa-shopping-cart" />{" "}
+                    <a href="#">
+                      <i className="fas fa-shopping-cart" />
                       <span className="cart-count">{countProduct}</span>
                     </a>
                     <ul className="minicart" >

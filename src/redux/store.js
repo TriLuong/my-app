@@ -3,6 +3,7 @@ import loginReducer from "./Login/Login.reducer";
 import registerReducer from "./Register/Register.reducer";
 import productListReducer from "./ProductList/ProductList.reducer";
 import productItemReducer from "./ProductItem/ProductItem.reducer";
+import orderReducer from "./Order/Order.reducer";
 
 // import headerReducer from "./Header/Header.reducer";
 import productDetailReducer from "./ProductDetail/ProductDetail.reducer";
@@ -14,14 +15,15 @@ const reducer = combineReducers({
   productListReducer,
   // headerReducer,
   productItemReducer,
-  productDetailReducer
+  productDetailReducer,
+  orderReducer
 });
 
 const store = createStore(
   reducer,
   compose(
     applyMiddleware(thunk),
-    window.devToolsExtension ? window.devToolsExtension() : f => f
+    window.devToolsExtension ? window.devToolsExtension() : (f) => f
   )
 );
 export default store;
