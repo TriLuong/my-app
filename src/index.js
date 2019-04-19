@@ -7,7 +7,7 @@ import withLazy from "./hoc/withLazy";
 import store from "./redux/store";
 import { Provider } from "react-redux";
 import Loading, { LoadingDetail, LoadingLogin, LoadingRegister } from "./components/Loading"
-import CheckoutContainer from "./components/Header/Checkout/Checkout.container"
+import CheckoutContainer from "./pages/Checkout/Checkout.container"
 
 import "./index.css";
 // import Home from "./pages/Home";
