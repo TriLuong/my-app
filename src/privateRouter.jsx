@@ -6,7 +6,7 @@ import firebase from "./firebase"
 export default function PrivateRoute({ component: Component, ...rest }) {
   // console.log("rest", rest);
   // console.log("component", Component);
-  const isAuthen = firebase.auth().currentUser;
+  const isAuthen = localStorage.getItem("userInfo");
   // console.log(isAuthen)
   return (
     <Route

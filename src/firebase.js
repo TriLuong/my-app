@@ -14,4 +14,13 @@ export const checkAuth = async () => {
   return user;
 };
 
-export default firebase.initializeApp(config);
+const _firebase = firebase.initializeApp(config);
+firebase.auth().onAuthStateChanged((user) => {
+  if (user) {
+    localStorage.setItem("userInfo", JSON.stringify(user));
+  } else {
+    localStorage.removeItem("userInfo");
+  }
+});
+
+export default _firebase;

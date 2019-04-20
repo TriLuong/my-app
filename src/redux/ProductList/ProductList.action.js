@@ -27,33 +27,34 @@ export function productListFail(error) {
 }
 
 export function getProducts() {
-  return dispatch => {
+  return (dispatch) => {
     dispatch(productListRequest());
     return fetch(
-      "https://mapi.sendo.vn/mob/product/cat/phu-kien-cong-nghe/phu-kien-may-tinh-laptop/usb/?p=1"
+      // "https://mapi.sendo.vn/mob/product/cat/phu-kien-cong-nghe/phu-kien-may-tinh-laptop/usb/?p=1"
+      "https://mapi.sendo.vn/mob/product/search/?p=1&q=lap+top"
     )
-      .then(r => r.json())
-      .then(r => dispatch(productListSuccess(r.data)))
-      .catch(error => dispatch(productListFail(error)));
+      .then((r) => r.json())
+      .then((r) => dispatch(productListSuccess(r.data)))
+      .catch((error) => dispatch(productListFail(error)));
   };
 }
 
 export function searchProducts(input) {
-  return dispatch => {
+  return (dispatch) => {
     dispatch(productListRequest());
     // console.log("input", input);
     // const linkProduct =
     //   "https://mapi.sendo.vn/mob/product/search?p=1&q=" + input;
     // console.log(linkProduct);
     return fetch(`https://mapi.sendo.vn/mob/product/search?p=1&q=${input}`)
-      .then(r => r.json())
-      .then(r => dispatch(productListSuccess(r.data)))
-      .catch(error => dispatch(productListFail(error)));
+      .then((r) => r.json())
+      .then((r) => dispatch(productListSuccess(r.data)))
+      .catch((error) => dispatch(productListFail(error)));
   };
 }
 
 export function sortProducts(data) {
-  return dispatch => {
+  return (dispatch) => {
     dispatch(productListRequest());
     dispatch(productListSuccess(data));
   };

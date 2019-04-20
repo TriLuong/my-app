@@ -1,18 +1,76 @@
 import React, { useEffect, useState } from "react";
 import { withRouter } from "react-router-dom";
-import {LoadingDetail} from "../../components/Loading"
+import { LoadingDetail } from "../../components/Loading";
 import HeaderContainer from "../../components/Header/Header.container";
-import Footer from "../../components/Footer"
+import Footer from "../../components/Footer";
 
 function ProductDetail(props) {
-  // console.log("props of ProductDetail",props)
   const product = props.result;
+
   useEffect(() => {
-    props.getProduct(props.match.params.id);
+    props.getProductDetail(props.match.params.id);
   }, []);
 
-  if (!product)
-    return <LoadingDetail></LoadingDetail>
+  if (!product) return <LoadingDetail />;
+
+  console.log("props of ProductDetail", props.productsList);
+
+  const elemtRecentProduct = props.productsList && props.productsList.map((elemt, index) => {
+    if (index < 5) {
+      return (
+        <div className="pro-item">
+          <div className="product-wrapper">
+            <div className="product-img mb-25" >
+              <a href="product-details.html">
+                <img
+                  src={elemt.img_url}
+                  style={{ height: "70px", width: "70px" }}
+                  alt=""
+                />
+              </a>
+              <div className="product-action text-center">
+                <a href="#" title="Shoppingb Cart">
+                  <i className="flaticon-shopping-cart" />
+                </a>
+                <a href="#" title="Quick View">
+                  <i className="flaticon-eye" />
+                </a>
+                <a
+                  href="#"
+                  data-toggle="tooltip"
+                  data-placement="right"
+                  title="Compare"
+                >
+                  <i className="flaticon-compare" />
+                </a>
+              </div>
+            </div>
+            <div className="product-content">
+              <div className="pro-cat mb-10">
+                <a href="shop.html">{elemt.shop_name}</a>
+              </div>
+              <h4>
+                <a href="product-details.html">{elemt.name}</a>
+              </h4>
+              <div className="product-meta">
+                <div className="pro-price">
+                  <span>{elemt.final_price.toLocaleString()} VND</span>
+                  <span className="old-price">
+                    {elemt.price.toLocaleString()} VND
+                  </span>
+                </div>
+              </div>
+              <div className="product-wishlist">
+                <a href="#">
+                  <i className="far fa-heart" title="Wishlist" />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    }
+  });
 
   return (
     <>
@@ -29,7 +87,10 @@ function ProductDetail(props) {
                     role="tabpanel"
                   >
                     <div className="product-large-img">
-                      <img src={product.img_url_mob} alt="" />
+                      <img
+                        src={"https://media3.scdn.vn" + product.images[0]}
+                        alt=""
+                      />
                     </div>
                   </div>
                   <div className="tab-pane fade" id="profile" role="tabpanel">
@@ -88,8 +149,7 @@ function ProductDetail(props) {
             <div className="col-xl-6 col-lg-8">
               <div className="product-details mb-30 pl-30">
                 <div className="details-cat mb-20">
-                  <a href="#">decor,</a>
-                  <a href="#">furniture</a>
+                  <a href="#">{product.categories.category_level2_name}</a>
                 </div>
                 <h2 className="pro-details-title mb-15">{product.name}</h2>
                 <div className="details-price mb-20">
@@ -161,12 +221,7 @@ function ProductDetail(props) {
                   </div>
 
                   <div className="product-desc variant-item">
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                      sed do eiusmod tempor incididunt ut labore et dolore magna
-                      aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                      ullamco laboris nisi ut aliquip.
-                    </p>
+                    <p>{product.short_description}</p>
                   </div>
 
                   <div className="product-info-list variant-item">
@@ -182,7 +237,7 @@ function ProductDetail(props) {
                       </li>
                       <li>
                         <span>Tình trạng:</span>{" "}
-                        <span className="in-stock">Còn hàng</span>
+                        <span className="in-stock">{product.status_text}</span>
                       </li>
                     </ul>
                   </div>
@@ -202,9 +257,7 @@ function ProductDetail(props) {
                           <i className="fas fa-hourglass" />
                         </button>
                         <div className="details-cart mt-40">
-                          <button className="btn theme-btn">
-                            mua ngay
-                          </button>
+                          <button className="btn theme-btn">mua ngay</button>
                         </div>
                       </form>
                     </div>
@@ -252,30 +305,7 @@ function ProductDetail(props) {
                     aria-labelledby="home-tab6"
                   >
                     <div className="desc-text">
-                      <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing
-                        elit, sed do eiusmod tempor incididunt ut labore et
-                        dolore magna aliqua. Ut enim ad minim veniam, quis
-                        nostrud exercitation ullamco laboris nisi ut aliquip ex
-                        ea commodo consequat. Duis aute irure dolor in
-                        reprehenderit in voluptate velit esse cillum dolore eu
-                        fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-                        non proident, sunt in culpa qui officia deserunt mollit
-                        anim id est laborum. Sed ut perspiciatis unde omnis iste
-                        natus error sit voluptatem accusantium doloremque
-                        laudantium, totam rem aperiam, eaque ipsa quae ab illo
-                        inventore veritatis et quasi architecto beatae vitae
-                        dicta sunt explicabo.
-                      </p>
-                      <p>
-                        Nemo enim ipsam voluptatem quia voluptas sit aspernatur
-                        aut odit aut fugit, sed quia consequuntur magni dolores
-                        eos qui ratione voluptatem sequi nesciunt. Neque porro
-                        quisquam est, qui dolorem ipsum quia dolor sit amet,
-                        consectetur, adipisci velit, sed quia non numquam eius
-                        modi tempora incidunt ut labore et dolore magnam aliquam
-                        quaerat voluptatem.
-                      </p>
+                      <div dangerouslySetInnerHTML={{__html: product.description}}></div>
                     </div>
                   </div>
                   <div
@@ -407,278 +437,7 @@ function ProductDetail(props) {
             </div>
           </div>
           <div className="product-slider-2 owl-carousel">
-            <div className="pro-item">
-              <div className="product-wrapper">
-                <div className="product-img mb-25">
-                  <a href="product-details.html">
-                    <img src="img/product/pro4.jpg" alt="" />
-                    <img
-                      className="secondary-img"
-                      src="img/product/pro5.jpg"
-                      alt=""
-                    />
-                  </a>
-                  <div className="product-action text-center">
-                    <a href="#" title="Shoppingb Cart">
-                      <i className="flaticon-shopping-cart" />
-                    </a>
-                    <a href="#" title="Quick View">
-                      <i className="flaticon-eye" />
-                    </a>
-                    <a
-                      href="#"
-                      data-toggle="tooltip"
-                      data-placement="right"
-                      title="Compare"
-                    >
-                      <i className="flaticon-compare" />
-                    </a>
-                  </div>
-                </div>
-                <div className="product-content">
-                  <div className="pro-cat mb-10">
-                    <a href="shop.html">IT, </a>
-                    <a href="shop.html">USB</a>
-                  </div>
-                  <h4>
-                    <a href="product-details.html">
-                      Raglan Baseball Style shirt
-                    </a>
-                  </h4>
-                  <div className="product-meta">
-                    <div className="pro-price">
-                      <span>119,000 VND</span>
-                      <span className="old-price">230,000 VND</span>
-                    </div>
-                  </div>
-                  <div className="product-wishlist">
-                    <a href="#">
-                      <i className="far fa-heart" title="Wishlist" />
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="pro-item">
-              <div className="product-wrapper">
-                <div className="product-img mb-25">
-                  <a href="product-details.html">
-                    <img src="img/product/pro5.jpg" alt="" />
-                    <img
-                      className="secondary-img"
-                      src="img/product/pro6.jpg"
-                      alt=""
-                    />
-                  </a>
-                  <div className="product-action text-center">
-                    <a href="#" title="Shoppingb Cart">
-                      <i className="flaticon-shopping-cart" />
-                    </a>
-                    <a href="#" title="Quick View">
-                      <i className="flaticon-eye" />
-                    </a>
-                    <a
-                      href="#"
-                      data-toggle="tooltip"
-                      data-placement="right"
-                      title="Compare"
-                    >
-                      <i className="flaticon-compare" />
-                    </a>
-                  </div>
-                  <div className="sale-tag">
-                    <span className="new">new</span>
-                    <span className="sale">sale</span>
-                  </div>
-                </div>
-                <div className="product-content">
-                  <div className="pro-cat mb-10">
-                    <a href="shop.html">decor, </a>
-                    <a href="shop.html">furniture</a>
-                  </div>
-                  <h4>
-                    <a href="product-details.html">
-                      Raglan Baseball Style shirt
-                    </a>
-                  </h4>
-                  <div className="product-meta">
-                    <div className="pro-price">
-                      <span>119,000 VND</span>
-                      <span className="old-price">230,000 VND</span>
-                    </div>
-                  </div>
-                  <div className="product-wishlist">
-                    <a href="#">
-                      <i className="far fa-heart" title="Wishlist" />
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="pro-item">
-              <div className="product-wrapper">
-                <div className="product-img mb-25">
-                  <a href="product-details.html">
-                    <img src="img/product/pro7.jpg" alt="" />
-                    <img
-                      className="secondary-img"
-                      src="img/product/pro8.jpg"
-                      alt=""
-                    />
-                  </a>
-                  <div className="product-action text-center">
-                    <a href="#" title="Shoppingb Cart">
-                      <i className="flaticon-shopping-cart" />
-                    </a>
-                    <a href="#" title="Quick View">
-                      <i className="flaticon-eye" />
-                    </a>
-                    <a
-                      href="#"
-                      data-toggle="tooltip"
-                      data-placement="right"
-                      title="Compare"
-                    >
-                      <i className="flaticon-compare" />
-                    </a>
-                  </div>
-                </div>
-                <div className="product-content">
-                  <div className="pro-cat mb-10">
-                    <a href="shop.html">decor, </a>
-                    <a href="shop.html">furniture</a>
-                  </div>
-                  <h4>
-                    <a href="product-details.html">
-                      Raglan Baseball Style shirt
-                    </a>
-                  </h4>
-                  <div className="product-meta">
-                    <div className="pro-price">
-                      <span>119,000 VND</span>
-                      <span className="old-price">230,000 VND</span>
-                    </div>
-                  </div>
-                  <div className="product-wishlist">
-                    <a href="#">
-                      <i className="far fa-heart" title="Wishlist" />
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="pro-item">
-              <div className="product-wrapper">
-                <div className="product-img mb-25">
-                  <a href="product-details.html">
-                    <img src="img/product/pro9.jpg" alt="" />
-                    <img
-                      className="secondary-img"
-                      src="img/product/pro10.jpg"
-                      alt=""
-                    />
-                  </a>
-                  <div className="product-action text-center">
-                    <a href="#" title="Shoppingb Cart">
-                      <i className="flaticon-shopping-cart" />
-                    </a>
-                    <a href="#" title="Quick View">
-                      <i className="flaticon-eye" />
-                    </a>
-                    <a
-                      href="#"
-                      data-toggle="tooltip"
-                      data-placement="right"
-                      title="Compare"
-                    >
-                      <i className="flaticon-compare" />
-                    </a>
-                  </div>
-                  <div className="sale-tag">
-                    <span className="new">new</span>
-                    <span className="sale">sale</span>
-                  </div>
-                </div>
-                <div className="product-content">
-                  <div className="pro-cat mb-10">
-                    <a href="shop.html">decor, </a>
-                    <a href="shop.html">furniture</a>
-                  </div>
-                  <h4>
-                    <a href="product-details.html">
-                      Raglan Baseball Style shirt
-                    </a>
-                  </h4>
-                  <div className="product-meta">
-                    <div className="pro-price">
-                      <span>119,000 VND</span>
-                      <span className="old-price">230,000 VND</span>
-                    </div>
-                  </div>
-                  <div className="product-wishlist">
-                    <a href="#">
-                      <i className="far fa-heart" title="Wishlist" />
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="pro-item">
-              <div className="product-wrapper">
-                <div className="product-img mb-25">
-                  <a href="product-details.html">
-                    <img src="img/product/pro1.jpg" alt="" />
-                    <img
-                      className="secondary-img"
-                      src="img/product/pro11.jpg"
-                      alt=""
-                    />
-                  </a>
-                  <div className="product-action text-center">
-                    <a href="#" title="Shoppingb Cart">
-                      <i className="flaticon-shopping-cart" />
-                    </a>
-                    <a href="#" title="Quick View">
-                      <i className="flaticon-eye" />
-                    </a>
-                    <a
-                      href="#"
-                      data-toggle="tooltip"
-                      data-placement="right"
-                      title="Compare"
-                    >
-                      <i className="flaticon-compare" />
-                    </a>
-                  </div>
-                  <div className="sale-tag">
-                    <span className="new">new</span>
-                    <span className="sale">sale</span>
-                  </div>
-                </div>
-                <div className="product-content">
-                  <div className="pro-cat mb-10">
-                    <a href="shop.html">decor, </a>
-                    <a href="shop.html">furniture</a>
-                  </div>
-                  <h4>
-                    <a href="product-details.html">
-                      Raglan Baseball Style shirt
-                    </a>
-                  </h4>
-                  <div className="product-meta">
-                    <div className="pro-price">
-                      <span>119,000 VND</span>
-                      <span className="old-price">230,000 VND</span>
-                    </div>
-                  </div>
-                  <div className="product-wishlist">
-                    <a href="#">
-                      <i className="far fa-heart" title="Wishlist" />
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
+            {elemtRecentProduct}
           </div>
         </div>
       </section>

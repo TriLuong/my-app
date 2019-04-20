@@ -2,9 +2,12 @@ import React from "react";
 import logo from "../../assets/logo_shop.png";
 import CartContainer from "./Cart/Cart.container";
 import { Link } from "react-router-dom"
+import firebase from "../../firebase"
 
 export default function Header(props) {
   // console.log("props of Header", props)
+  const userInfo = JSON.parse(localStorage.getItem("userInfo")) ? JSON.parse(localStorage.getItem("userInfo")) :null;
+  console.log("userInfo", userInfo)
   let total = 0;
   const countProduct = props.productCount;
   const productsSelected = props.productSelected;
@@ -12,6 +15,11 @@ export default function Header(props) {
     productsSelected.forEach((elemt, index) => {
       total += elemt.final_price * elemt.quantity;
     })
+  }
+
+  const logOut = () => {
+    firebase.auth().signOut()
+    window.location.href = '/login';
   }
 
   return (
@@ -57,9 +65,9 @@ export default function Header(props) {
                       <i className="fas fa-search" />
                     </a>
                   </li>
-                  <li className="login-btn">
-                    <Link to="/login">
-                      <i className="far fa-user" />
+                  <li className="login-btn" onClick={logOut}>
+                    <Link to="/login" style={userInfo ? {backgroundColor: "aquamarine"}: null}>
+                      <i className="far fa-user"/>
                     </Link>
                   </li>
                   <li className="d-shop-cart">
