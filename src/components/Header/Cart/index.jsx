@@ -6,7 +6,7 @@ export default function Cart(props) {
   };
   return (
     <>
-    <li style={{width: "100%", marginLeft: "0"}}>
+    <li style={{width: "100%", marginLeft: "0", paddingRight: "10px"}}>
       {/* <div className="cart-img">
           <a href="#">
             <img src={props.img_url} alt="" />
