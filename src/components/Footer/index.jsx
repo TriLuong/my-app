@@ -1,6 +1,6 @@
 import React from "react";
-import logo from "../../assets/logo_shop.png"
-import time from "../../assets/time.png"
+import logo from "../../assets/shop-logo.png";
+import time from "../../assets/time.png";
 
 export default function Footer() {
   return (
