@@ -30,8 +30,8 @@ export function getProducts() {
   return (dispatch) => {
     dispatch(productListRequest());
     return fetch(
-      // "https://mapi.sendo.vn/mob/product/cat/phu-kien-cong-nghe/phu-kien-may-tinh-laptop/usb/?p=1"
-      "https://mapi.sendo.vn/mob/product/search/?p=1&q=balo"
+      "https://mapi.sendo.vn/mob/product/cat/phu-kien-cong-nghe/phu-kien-may-tinh-laptop/usb/?p=1"
+      // "https://mapi.sendo.vn/mob/product/search/?p=1&q=balo"
     )
       .then((r) => r.json())
       .then((r) => dispatch(productListSuccess(r.data)))
