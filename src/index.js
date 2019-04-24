@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 // import data from "./dataProductList.json";
-import PrivateRoute from "./privateRouter";
+import PrivateRoute, { AdminRoute } from "./privateRouter";
 import withLazy from "./hoc/withLazy";
 import store from "./redux/store";
 import { Provider } from "react-redux";
@@ -15,6 +15,7 @@ import CheckoutContainer from "./pages/Checkout/Checkout.container";
 import OrderContainer from "./pages/Order/Order.container";
 import ConfirmOrderContainer from "./pages/ConfirmOrder/ConfirmOrder.container";
 import OrderSuccess from "./pages/OderSuccess";
+// import Admin from "./pages/Admin";
 
 import "./index.css";
 // import Home from "./pages/Home";
@@ -41,20 +42,23 @@ const RegisterContainer = withLazy(
   () => import("./pages/Register/Register.container"),
   <LoadingRegister />
 );
-const NotFound = withLazy(() => import("./pages/NotFound"));
+
+const Admin = withLazy(() => import("./pages/Admin"), null);
+const NotFound = withLazy(() => import("./pages/NotFound"), null);
 
 ReactDOM.render(
   <Provider store={store}>
     <Router>
       <Switch>
         <Route exact path="/" component={Home} />
-        <PrivateRoute path="/product/:id" component={ProductDetailContainer} />
+        <Route path="/product/:id" component={ProductDetailContainer} />
         <Route path="/login" component={LoginContainer} />
         <Route path="/register" component={RegisterContainer} />
         <Route path="/checkout" component={CheckoutContainer} />
-        <Route path="/order" component={OrderContainer} />
-        <Route path="/confirmorder" component={ConfirmOrderContainer} />
-        <Route path="/ordersuccess" component={OrderSuccess} />
+        <PrivateRoute path="/order" component={OrderContainer} />
+        <PrivateRoute path="/confirmorder" component={ConfirmOrderContainer} />
+        <PrivateRoute path="/ordersuccess" component={OrderSuccess} />
+        <AdminRoute path="/admin" component={Admin} />
         <Route component={NotFound} />
       </Switch>
     </Router>

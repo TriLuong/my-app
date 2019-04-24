@@ -3,6 +3,7 @@ import logo from "../../assets/shop-logo.png";
 import CartContainer from "./Cart/Cart.container";
 import { Link } from "react-router-dom";
 import firebase from "../../firebase";
+import { isAdmin } from "../../privateRouter";
 
 export default function Header(props) {
   // console.log("props of Header", props)
@@ -23,6 +24,14 @@ export default function Header(props) {
     firebase.auth().signOut();
     window.location.href = "/login";
   };
+
+  const elemtAdmin = isAdmin ? (
+    <li>
+      <Link to="/admin">Admin</Link>
+    </li>
+  ) : (
+    ""
+  );
 
   return (
     <header>
@@ -52,6 +61,7 @@ export default function Header(props) {
                     <li>
                       <a href="javascrip:void(0)">Giới thiệu</a>
                     </li>
+                    {elemtAdmin}
                   </ul>
                 </nav>
               </div>
