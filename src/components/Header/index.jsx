@@ -3,14 +3,15 @@ import logo from "../../assets/shop-logo.png";
 import CartContainer from "./Cart/Cart.container";
 import { Link } from "react-router-dom";
 import firebase from "../../firebase";
-import { isAdmin } from "../../privateRouter";
+import { admin_uid } from "../../privateRouter";
 
 export default function Header(props) {
   // console.log("props of Header", props)
-  const userInfo = JSON.parse(localStorage.getItem("userInfo"))
+  const isAuthen = JSON.parse(localStorage.getItem("userInfo"))
     ? JSON.parse(localStorage.getItem("userInfo"))
     : null;
-  console.log("userInfo", userInfo);
+  const isAdmin = isAuthen && isAuthen.uid === admin_uid;
+  console.log("isAuthen", isAuthen);
   let total = 0;
   const countProduct = props.productCount;
   const productsSelected = props.productSelected;
@@ -81,7 +82,7 @@ export default function Header(props) {
                     <Link
                       to="/login"
                       style={
-                        userInfo ? { backgroundColor: "aquamarine" } : null
+                        isAuthen ? { backgroundColor: "aquamarine" } : null
                       }
                     >
                       <i className="far fa-user" />

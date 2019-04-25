@@ -23,4 +23,6 @@ firebase.auth().onAuthStateChanged((user) => {
   }
 });
 
+export var database = firebase.database();
+
 export default _firebase;
