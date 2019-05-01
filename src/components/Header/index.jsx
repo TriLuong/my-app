@@ -11,7 +11,7 @@ export default function Header(props) {
     ? JSON.parse(localStorage.getItem("userInfo"))
     : null;
   const isAdmin = isAuthen && isAuthen.uid === admin_uid;
-  console.log("isAuthen", isAuthen);
+  // console.log("isAuthen", isAuthen);
   let total = 0;
   const countProduct = props.productCount;
   const productsSelected = props.productSelected;

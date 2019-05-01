@@ -21,7 +21,7 @@ export default function ProductList(props) {
     props.products.filter((elemt, index) => {
       return index < 3;
     });
-  console.log("recentProducts", recentProducts);
+  // console.log("recentProducts", recentProducts);
 
   const elemtRecentProduct =
     recentProducts &&

@@ -45,7 +45,7 @@ export  function  checkLogin(loginInfo, props) {
       }
       
     } catch (error) {
-      console.log("error.message",error.message)
+      // console.log("error.message",error.message)
       dispatch(loginFail("* " + error.message));
     }
   };

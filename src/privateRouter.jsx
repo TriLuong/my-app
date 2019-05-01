@@ -7,7 +7,7 @@ export const admin_uid = "qlibaU2unZULqUSUTHlmXBIGTlR2";
 export function AdminRoute({ component: Component, ...rest }) {
   const isAuthen = JSON.parse(localStorage.getItem("userInfo"));
   const isAdmin = isAuthen && isAuthen.uid === admin_uid;
-  console.log("isAdmin", isAdmin);
+  // console.log("isAdmin", isAdmin);
   return (
     <Route
       {...rest}
@@ -32,7 +32,7 @@ export default function PrivateRoute({ component: Component, ...rest }) {
   // console.log("component", Component);
   const isAuthen = JSON.parse(localStorage.getItem("userInfo"));
   const isAdmin = isAuthen && isAuthen.uid === admin_uid;
-  console.log("isAuthen && !isAdmin", isAuthen && !isAdmin);
+  // console.log("isAuthen && !isAdmin", isAuthen && !isAdmin);
   return (
     <Route
       {...rest}

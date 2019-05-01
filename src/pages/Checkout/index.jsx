@@ -5,7 +5,7 @@ import HeaderContainer from "../../components/Header/Header.container"
 import cartEmptyImg from "../../assets/cart-empty.png"
 
 export default function Checkout(props) {
-    console.log("Checkout", props.productsSelected);
+    // console.log("Checkout", props.productsSelected);
 
     let total = 0;
     let elemtProductsSelected = props.productsSelected && props.productsSelected.map((elemt, index) => {

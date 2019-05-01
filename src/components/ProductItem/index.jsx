@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 export default function ProductItem(props) {
-  console.log("props of ProductItem", props.productsSelected);
+  // console.log("props of ProductItem", props.productsSelected);
   // const [state, setState] = useState("");
 
   let state = "";
@@ -10,7 +10,7 @@ export default function ProductItem(props) {
     const products = { ...props };
     delete products.selectProducts;
     delete products.deleteProducts;
-    console.log("products", products);
+    // console.log("products", products);
     props.selectProducts(products);
   };
 

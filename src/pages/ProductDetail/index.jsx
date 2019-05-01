@@ -13,7 +13,7 @@ function ProductDetail(props) {
 
   if (!product) return <LoadingDetail />;
 
-  console.log("props of ProductDetail", props.productsList);
+  // console.log("props of ProductDetail", props.productsList);
 
   const elemtRecentProduct = props.productsList && props.productsList.map((elemt, index) => {
     if (index < 5) {

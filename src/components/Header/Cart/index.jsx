@@ -1,7 +1,7 @@
 import React from "react";
 
 export default function Cart(props) {
-  console.log("Cart props", props);
+  // console.log("Cart props", props);
   const deleteProduct = () => {
     props.deleteProducts(props);
   };
