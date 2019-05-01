@@ -28,6 +28,10 @@ export function selectProducts(product) {
   return (dispatch, getState) => {
     dispatch(productItemRequest());
     const productsSelectedArr = getState().productItemReducer.result;
+    console.log(
+      "productItemReducer.result",
+      getState().productItemReducer.result
+    );
     //Select fist product
     if (productsSelectedArr === null) {
       dispatch(

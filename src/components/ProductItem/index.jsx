@@ -2,17 +2,21 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 export default function ProductItem(props) {
-  // console.log("props of ProductItem", props)
+  console.log("props of ProductItem", props.productsSelected);
   // const [state, setState] = useState("");
 
   let state = "";
   const select = () => {
-    props.selectProducts(props);
+    const products = { ...props };
+    delete products.selectProducts;
+    delete products.deleteProducts;
+    console.log("products", products);
+    props.selectProducts(products);
   };
 
   if (props.productsSelected !== null) {
     const productSelected = props.productsSelected.find(
-      elemt => elemt.id === props.id
+      (elemt) => elemt.id === props.id
     );
     //  console.log(productSelected.state);
     if (productSelected == null) {
@@ -20,9 +24,7 @@ export default function ProductItem(props) {
     } else {
       state = productSelected.state;
     }
-    
   }
-
 
   return (
     <div className="col-xl-4 col-lg-6 col-md-6">
@@ -42,7 +44,9 @@ export default function ProductItem(props) {
         </div>
         <div className="product-content pr-0">
           <div className="pro-cat mb-10">
-            <a href="javascript:void(0)">{props.shop_name} {state}</a>
+            <a href="javascript:void(0)">
+              {props.shop_name} {state}
+            </a>
           </div>
           <h4>
             <a href="javascript:void(0)">{props.name}</a>

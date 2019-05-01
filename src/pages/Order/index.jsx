@@ -22,7 +22,7 @@ function Order(props) {
 
   const SubmitHandler = (event) => {
     event.preventDefault();
-    console.log("thong tin dat hang", orderInfo);
+    // console.log("thong tin dat hang", orderInfo);
     props.setOrderInfo(orderInfo, props);
   };
   return (

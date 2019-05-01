@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
-import ProductItemContainer from "../ProductItem/ProductItem.container"
-import SearchContainer from "./SearchWidget/Search.container"
+import ProductItemContainer from "../ProductItem/ProductItem.container";
+// import ProductItem from "../ProductItem";
+import SearchContainer from "./SearchWidget/Search.container";
 import recentProduct3 from "../../assets/shop-rsp3.jpg";
 import recentProduct2 from "../../assets/shop-rsp2.jpg";
 import recentProduct4 from "../../assets/shop-rsp4.jpg";
@@ -10,48 +11,58 @@ import Loading from "../Loading";
 export default function ProductList(props) {
   // console.log("props ProducList", props);
   useEffect(() => {
-    props.getProducts()
-  }, [])
+    props.getProducts();
+  }, []);
   // console.log("props ProducList2", props);
   // console.log("value.dataSort ", value.dataSort);
 
-  const recentProducts = props.products && props.products.filter((elemt, index) => {
-    return index < 3;
-  })
+  const recentProducts =
+    props.products &&
+    props.products.filter((elemt, index) => {
+      return index < 3;
+    });
   console.log("recentProducts", recentProducts);
 
-  const elemtRecentProduct = recentProducts && recentProducts.map((elemt, index) => {
-    return <li key={index}>
-      <div className="side-pro-img">
-        <a href="javascript:void(0)">
-          <img src={elemt.img_url} alt="" />
-        </a>
-      </div>
-      <div className="side-pro-content">
-        <div className="side-pro-rating">
-          <i className="fas fa-star" />
-          <i className="fas fa-star" />
-          <i className="fas fa-star" />
-          <i className="fas fa-star" />
-          <i className="fas fa-star" />
-        </div>
-        <h5>
-          <a href="javascript:void(0)">{elemt.name}</a>
-        </h5>
-        <div className="side-pro-price">
-          <span>{elemt.final_price.toLocaleString()} VND</span>
-        </div>
-        {elemt.is_promotion === 1 ? (
-          <div >
-            <del style={{color: "#bcbdce"}}>{elemt.price.toLocaleString()} VND</del>
+  const elemtRecentProduct =
+    recentProducts &&
+    recentProducts.map((elemt, index) => {
+      return (
+        <li key={index}>
+          <div className="side-pro-img">
+            <a href="javascript:void(0)">
+              <img src={elemt.img_url} alt="" />
+            </a>
           </div>
-        ) : ("")}
-      </div>
-    </li>
-  })
-  const productLength = props.products && props.products.length || 0
+          <div className="side-pro-content">
+            <div className="side-pro-rating">
+              <i className="fas fa-star" />
+              <i className="fas fa-star" />
+              <i className="fas fa-star" />
+              <i className="fas fa-star" />
+              <i className="fas fa-star" />
+            </div>
+            <h5>
+              <a href="javascript:void(0)">{elemt.name}</a>
+            </h5>
+            <div className="side-pro-price">
+              <span>{elemt.final_price.toLocaleString()} VND</span>
+            </div>
+            {elemt.is_promotion === 1 ? (
+              <div>
+                <del style={{ color: "#bcbdce" }}>
+                  {elemt.price.toLocaleString()} VND
+                </del>
+              </div>
+            ) : (
+              ""
+            )}
+          </div>
+        </li>
+      );
+    });
+  const productLength = (props.products && props.products.length) || 0;
   if (props.load) {
-    return <Loading></Loading>
+    return <Loading />;
   }
 
   const sortAZ = (a, b) => {
@@ -71,8 +82,8 @@ export default function ProductList(props) {
   };
 
   const sortH2L = (a, b) => {
-    if ((a.final_price) < (b.final_price)) return 1;
-    else if ((a.final_price) > (b.final_price)) return -1;
+    if (a.final_price < b.final_price) return 1;
+    else if (a.final_price > b.final_price) return -1;
     else return 0;
   };
 
@@ -116,8 +127,6 @@ export default function ProductList(props) {
     // console.log("value.dataSort", value.dataSort);
   };
 
-
-
   return (
     <section className="shop-area pt-150 pb-100">
       <div className="container">
@@ -142,12 +151,16 @@ export default function ProductList(props) {
                 aria-labelledby="home-tab"
               >
                 <div className="row">
-                  {props.products && props.products.map((elemt, index) => {
-                    return (
-                      <ProductItemContainer key={elemt.id} index={index} {...elemt} />
-                    )
-                  })
-                  }
+                  {props.products &&
+                    props.products.map((elemt, index) => {
+                      return (
+                        <ProductItemContainer
+                          key={elemt.id}
+                          index={index}
+                          {...elemt}
+                        />
+                      );
+                    })}
                 </div>
               </div>
             </div>
@@ -155,7 +168,7 @@ export default function ProductList(props) {
           {/*<!--SideBar -->*/}
           <div className="col-xl-3 col-lg-4">
             <div className="sidebar-shop">
-              <SearchContainer></SearchContainer>
+              <SearchContainer />
               {/*<!-- 
                             <div className="shop-widget">
                                 <h3 className="shop-title">Filter selection</h3>
@@ -198,9 +211,7 @@ export default function ProductList(props) {
 
               <div className="shop-widget">
                 <h3 className="shop-title">Sản phẩm gần đây</h3>
-                <ul className="shop-sidebar-product">
-                  {elemtRecentProduct}
-                </ul>
+                <ul className="shop-sidebar-product">{elemtRecentProduct}</ul>
               </div>
 
               <div className="shop-widget">

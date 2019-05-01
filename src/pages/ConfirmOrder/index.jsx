@@ -1,12 +1,15 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import Footer from "../../components/Footer";
 import HeaderContainer from "../../components/Header/Header.container";
 import cartEmptyImg from "../../assets/cart-empty.png";
+import { database } from "../../firebase";
 
-export default function ConfirmOrder(props) {
-  console.log("ConfirmOrder", props);
-
+function ConfirmOrder(props) {
+  // console.log("ConfirmOrder", props);
+  const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+  const productsSelected = props.productsSelected;
+  // console.log("props.productsSelected", productsSelected);
   let total = 0;
   let elemtProductsSelected =
     props.productsSelected &&
@@ -36,6 +39,18 @@ export default function ConfirmOrder(props) {
     props.productsSelected.forEach((elemt) => {
       return (total += elemt.quantity * elemt.final_price);
     });
+
+  const confirmOrder = () => {
+    const today = new Date();
+    // console.log("today", today);
+    database.ref("users/" + userInfo.uid + "/" + today).set({
+      userInfo: userInfo,
+      orderInfo: props.orderInfo,
+      productsSelected: productsSelected
+    });
+    props.history.push({ pathname: "/ordersuccess" });
+  };
+
   return (
     <>
       <HeaderContainer />
@@ -75,8 +90,8 @@ export default function ConfirmOrder(props) {
               </table>
             </div>
 
-            <div className="container" >
-              <h2 style={{paddingBottom: "1em"}}>Thông tin người nhận</h2>
+            <div className="container">
+              <h2 style={{ paddingBottom: "1em" }}>Thông tin người nhận</h2>
               <table className="table">
                 <tbody>
                   <tr>
@@ -97,12 +112,27 @@ export default function ConfirmOrder(props) {
             <br />
             <br />
             <div style={{ textAlign: "center" }}>
-              <div className="checkout-link">
-                <Link to="/ordersuccess" style={{ background: "blue" }}>
+              <div
+                className="checkout-link"
+                style={{ width: "20em", margin: "auto" }}
+              >
+                <button
+                  className="btn theme-btn-2 w-100"
+                  onClick={confirmOrder}
+                >
                   Xác nhận đơn hàng
-                </Link>
+                </button>
                 <span> </span>
-                <Link to="/">Hủy bỏ</Link>
+                <Link
+                  to="/"
+                  style={{
+                    display: "block",
+                    marginTop: "1em",
+                    backgroundColor: "red"
+                  }}
+                >
+                  Hủy bỏ
+                </Link>
               </div>
             </div>
           </>
@@ -126,3 +156,5 @@ export default function ConfirmOrder(props) {
     </>
   );
 }
+
+export default withRouter(ConfirmOrder);
