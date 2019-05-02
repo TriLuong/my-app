@@ -44,6 +44,11 @@ const RegisterContainer = withLazy(
 );
 
 const Admin = withLazy(() => import("./pages/Admin"), null);
+const AdminContainner = withLazy(
+  () => import("./pages/Admin/Admin.container"),
+  null
+);
+
 const NotFound = withLazy(() => import("./pages/NotFound"), null);
 
 ReactDOM.render(
@@ -58,7 +63,7 @@ ReactDOM.render(
         <PrivateRoute path="/order" component={OrderContainer} />
         <PrivateRoute path="/confirmorder" component={ConfirmOrderContainer} />
         <PrivateRoute path="/ordersuccess" component={OrderSuccess} />
-        <AdminRoute path="/admin" component={Admin} />
+        <AdminRoute path="/admin" component={AdminContainner} />
         <Route component={NotFound} />
       </Switch>
     </Router>

@@ -4,6 +4,7 @@ import registerReducer from "./Register/Register.reducer";
 import productListReducer from "./ProductList/ProductList.reducer";
 import productItemReducer from "./ProductItem/ProductItem.reducer";
 import orderReducer from "./Order/Order.reducer";
+import adminReducer from "./Admin/Admin.reducer";
 
 // import headerReducer from "./Header/Header.reducer";
 import productDetailReducer from "./ProductDetail/ProductDetail.reducer";
@@ -16,7 +17,8 @@ const reducer = combineReducers({
   // headerReducer,
   productItemReducer,
   productDetailReducer,
-  orderReducer
+  orderReducer,
+  adminReducer
 });
 
 const store = createStore(
