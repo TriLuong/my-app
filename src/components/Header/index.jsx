@@ -63,6 +63,13 @@ export default function Header(props) {
                       <a href="javascrip:void(0)">Giới thiệu</a>
                     </li>
                     {elemtAdmin}
+                    <li>
+                      {isAuthen ? (
+                        <p>Hi, {isAuthen.email.slice(0, -10)}</p>
+                      ) : (
+                        ""
+                      )}
+                    </li>
                   </ul>
                 </nav>
               </div>
